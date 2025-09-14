@@ -11,7 +11,7 @@ generates other files.
 
 You should avoid pushing to the `build` branch manually.
 
-For details, see [the publish workflow](./github/workflows/publish.yml).
+For details, see [the publish workflow](./.github/workflows/publish.yml).
 
 
 
