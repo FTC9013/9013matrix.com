@@ -22,6 +22,14 @@ jobs:
 #
 #      - name: Build
 #        run: npm run build # The build command of your project
+#
+# For now, simulate it:
+
+      - name: Copy Files to Build Directory
+        run: |
+          # Example of copying specific files/folders
+          cp -R src build
+
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop
