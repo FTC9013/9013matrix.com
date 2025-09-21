@@ -50,104 +50,66 @@
 
 <!--This shows what is in the page-->
 <div class="main">
-<select id="calendar-type" onchange="toggleCalendarBlock()">
-  <option value="events">Important Dates</option>
-  <option value="meetings">Meeting Dates</option>
-</select>
+  <select id="calendar-type" onchange="toggleCalendarBlock()">
+    <option value="events">Important Dates</option>
+    <option value="meetings">Meeting Dates</option>
+  </select>
 
-<div id="events-calendar" style="display:block;">
-  <div class="month">
-    <h4>September 2025</h4>
-    <table>
-      <tr>
-        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-      </tr>
-      <tr>
-        <td></td><td>1</td>
-        <td style="background:#FFD700;">2<br><small>10:00 AM</small></td>
-        <td>3</td>
-        <td style="background:#FFD700;">4<br><small>2:00 PM</small></td>
-        <td>5</td>
-        <td style="background:#FFD700;">6<br><small>10:00 AM</small></td>
-      </tr>
-      <tr>
-        <td>7</td><td>8</td>
-        <td style="background:#FFD700;">9<br><small>10:00 AM</small></td>
-        <td>10</td>
-        <td style="background:#FFD700;">11<br><small>2:00 PM</small></td>
-        <td>12</td>
-        <td style="background:#FFD700;">13<br><small>10:00 AM</small></td>
-      </tr>
-      <tr>
-        <td>14</td><td>15</td>
-        <td style="background:#FFD700;">16<br><small>10:00 AM</small></td>
-        <td>17</td>
-        <td style="background:#FFD700;">18<br><small>2:00 PM</small></td>
-        <td>19</td>
-        <td style="background:#FFD700;">20<br><small>10:00 AM</small></td>
-      </tr>
-      <tr>
-        <td>21</td><td>22</td>
-        <td style="background:#FFD700;">23<br><small>10:00 AM</small></td>
-        <td>24</td>
-        <td style="background:#FFD700;">25<br><small>2:00 PM</small></td>
-        <td>26</td>
-        <td style="background:#FFD700;">27<br><small>10:00 AM</small></td>
-      </tr>
-      <tr>
-        <td>28</td><td>29</td>
-        <td style="background:#FFD700;">30<br><small>10:00 AM</small></td>
-        <td></td><td></td><td></td><td></td>
-      </tr>
+  <div id="events-calendar" style="display:block;">
+    <h3>Important Dates</h3>
+    <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
+      <thead>
+        <tr style="background: #FFD700;">
+          <th>Date</th>
+          <th>Time</th>
+          <th>Event</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tue, Sep 2</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+        <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+        <tr><td>Sat, Sep 6</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+        <tr><td>Tue, Sep 9</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+        <tr><td>Thu, Sep 11</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+        <tr><td>Sat, Sep 13</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+        <tr><td>Tue, Sep 16</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+        <tr><td>Thu, Sep 18</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+        <tr><td>Sat, Sep 20</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+        <tr><td>Tue, Sep 23</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+        <tr><td>Thu, Sep 25</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+        <tr><td>Sat, Sep 27</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+        <tr><td>Tue, Sep 30</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+      </tbody>
     </table>
   </div>
-</div>
 
-<div id="meetings-calendar" style="display:none;">
-  <h3>Meeting Dates</h3>
-  <div class="month">
-    <h4>September 2025</h4>
-    <table>
-      <tr>
-        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-      </tr>
-      <tr>
-        <td></td><td>1</td>
-        <td style="background:#ADD8E6;">2<br><small>9:00 AM</small></td>
-        <td>3</td>
-        <td style="background:#ADD8E6;">4<br><small>2:00 PM</small></td>
-        <td>5</td>
-        <td style="background:#ADD8E6;">6<br><small>4:00 PM</small></td>
-      </tr>
-      <tr>
-        <td>7</td><td>8</td>
-        <td style="background:#ADD8E6;">9<br><small>9:00 AM</small></td>
-        <td>10</td>
-        <td style="background:#ADD8E6;">11<br><small>2:00 PM</small></td>
-        <td>12</td>
-        <td style="background:#ADD8E6;">13<br><small>4:00 PM</small></td>
-      </tr>
-      <tr>
-        <td>14</td><td>15</td>
-        <td style="background:#ADD8E6;">16<br><small>9:00 AM</small></td>
-        <td>17</td>
-        <td style="background:#ADD8E6;">18<br><small>2:00 PM</small></td>
-        <td>19</td>
-        <td style="background:#ADD8E6;">20<br><small>4:00 PM</small></td>
-      </tr>
-      <tr>
-        <td>21</td><td>22</td>
-        <td style="background:#ADD8E6;">23<br><small>9:00 AM</small></td>
-        <td>24</td>
-        <td style="background:#ADD8E6;">25<br><small>2:00 PM</small></td>
-        <td>26</td>
-        <td style="background:#ADD8E6;">27<br><small>4:00 PM</small></td>
-      </tr>
-      <tr>
-        <td>28</td><td>29</td>
-        <td style="background:#ADD8E6;">30<br><small>9:00 AM</small></td>
-        <td></td><td></td><td></td><td></td>
-      </tr>
+  <div id="meetings-calendar" style="display:none;">
+    <h3>Meeting Dates</h3>
+    <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
+      <thead>
+        <tr style="background: #ADD8E6;">
+          <th>Date</th>
+          <th>Time</th>
+          <th>Event</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tue, Sep 2</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
+        <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
+        <tr><td>Sat, Sep 6</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
+        <tr><td>Tue, Sep 9</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
+        <tr><td>Thu, Sep 11</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
+        <tr><td>Sat, Sep 13</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
+        <tr><td>Tue, Sep 16</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
+        <tr><td>Thu, Sep 18</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
+        <tr><td>Sat, Sep 20</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
+        <tr><td>Tue, Sep 23</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
+        <tr><td>Thu, Sep 25</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
+        <tr><td>Sat, Sep 27</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
+        <tr><td>Tue, Sep 30</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
+      </tbody>
     </table>
   </div>
 </div>
