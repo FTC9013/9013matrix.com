@@ -50,61 +50,57 @@
 
 <!--This shows what is in the page-->
 <div class="main">
-<div class="main-calendar-dropdowns">
-  <h2>Calendar</h2>
-  <label for="calendar-type">Show:</label>
-  <select id="calendar-type" onchange="toggleCalendarBlock()">
-    <option value="">--Choose--</option>
-    <option value="events">Important Events</option>
-    <option value="meetings">Meeting Dates</option>
-  </select>
-  
-  <!-- Important Events Calendar -->
-  <div id="events-calendar" style="display:none;">
-   <div class="month">
-  <h4>September 2025</h4>
-  <table>
-    <tr>
-      <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-    </tr>
-    <tr>
-      <td></td><td>1</td>
-      <td style="background:#FFD700;">2<br><small>10:00 AM</small></td>
-      <td>3</td>
-      <td style="background:#FFD700;">4<br><small>2:00 PM</small></td>
-      <td>5</td>
-      <td style="background:#FFD700;">6<br><small>10:00 AM</small></td>
-    </tr>
-    <tr>
-      <td>7</td><td>8</td>
-      <td style="background:#FFD700;">9<br><small>10:00 AM</small></td>
-      <td>10</td>
-      <td style="background:#FFD700;">11<br><small>2:00 PM</small></td>
-      <td>12</td>
-      <td style="background:#FFD700;">13<br><small>10:00 AM</small></td>
-    </tr>
-    <tr>
-      <td>14</td><td>15</td>
-      <td style="background:#FFD700;">16<br><small>10:00 AM</small></td>
-      <td>17</td>
-      <td style="background:#FFD700;">18<br><small>2:00 PM</small></td>
-      <td>19</td>
-      <td style="background:#FFD700;">20<br><small>10:00 AM</small></td>
-    </tr>
-    <tr>
-      <td>21</td><td>22</td>
-      <td style="background:#FFD700;">23<br><small>10:00 AM</small></td>
-      <td>24</td>
-      <td style="background:#FFD700;">25<br><small>2:00 PM</small></td>
-      <td>26</td>
-      <td style="background:#FFD700;">27<br><small>10:00 AM</small></td>
-    </tr>
-    <tr>
-      <td>28</td><td>29</td>
-      <td style="background:#FFD700;">30<br><small>10:00 AM</small></td>
-      <td></td><td></td><td></td><td></td>
-    </tr>
-  </table>
+<select id="calendar-type" onchange="toggleCalendarBlock()">
+  <option value="events">Important Dates</option>
+  <option value="meetings">Meeting Dates</option>
+</select>
+
+<div id="events-calendar" style="display:block;">
+  <div class="month">
+    <h4>September 2025</h4>
+    <table>
+      <tr>
+        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+      </tr>
+      <tr>
+        <td></td><td>1</td>
+        <td style="background:#FFD700;">2<br><small>10:00 AM</small></td>
+        <td>3</td>
+        <td style="background:#FFD700;">4<br><small>2:00 PM</small></td>
+        <td>5</td>
+        <td style="background:#FFD700;">6<br><small>10:00 AM</small></td>
+      </tr>
+      <tr>
+        <td>7</td><td>8</td>
+        <td style="background:#FFD700;">9<br><small>10:00 AM</small></td>
+        <td>10</td>
+        <td style="background:#FFD700;">11<br><small>2:00 PM</small></td>
+        <td>12</td>
+        <td style="background:#FFD700;">13<br><small>10:00 AM</small></td>
+      </tr>
+      <tr>
+        <td>14</td><td>15</td>
+        <td style="background:#FFD700;">16<br><small>10:00 AM</small></td>
+        <td>17</td>
+        <td style="background:#FFD700;">18<br><small>2:00 PM</small></td>
+        <td>19</td>
+        <td style="background:#FFD700;">20<br><small>10:00 AM</small></td>
+      </tr>
+      <tr>
+        <td>21</td><td>22</td>
+        <td style="background:#FFD700;">23<br><small>10:00 AM</small></td>
+        <td>24</td>
+        <td style="background:#FFD700;">25<br><small>2:00 PM</small></td>
+        <td>26</td>
+        <td style="background:#FFD700;">27<br><small>10:00 AM</small></td>
+      </tr>
+      <tr>
+        <td>28</td><td>29</td>
+        <td style="background:#FFD700;">30<br><small>10:00 AM</small></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div id="meetings-calendar" style="display:none;">
@@ -155,3 +151,11 @@
     </table>
   </div>
 </div>
+
+<script>
+function toggleCalendarBlock() {
+  var type = document.getElementById('calendar-type').value;
+  document.getElementById('events-calendar').style.display = (type === 'events') ? 'block' : 'none';
+  document.getElementById('meetings-calendar').style.display = (type === 'meetings') ? 'block' : 'none';
+}
+</script>
