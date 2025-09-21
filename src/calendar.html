@@ -50,55 +50,100 @@
 
 <!--This shows what is in the page-->
 <div class="main">
-      <html>
-<head>
-  <title>Full Calendar</title>
-  <style>
-    .calendar { font-family: Arial, sans-serif; margin: 15px; font-size: 13px; }
-    .calendar h2 { margin-top: 25px; font-size: 20px; }
-    .month { margin-bottom: 20px; }
-    .month h3 { font-size: 16px; text-align: center; margin-bottom: 5px; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #999; text-align: center; padding: 3px; width: 14.2%; vertical-align: top; }
-    th { background-color: #f2f2f2; }
-    select { width: 90%; font-size: 11px; margin-top: 2px; }
-  </style>
-</head>
-<body>
-
-<div class="main calendar">
+<div class="main-calendar-dropdowns">
   <h2>Calendar</h2>
-  <p>Our calendar will go here.</p>
-  <h2>Calendar</h2>
-  <label for="calendar-dropdown">Choose calendar type:</label>
-  <select id="calendar-dropdown" onchange="showCalendarSection()">
-    <option value="">--Select--</option>
+  <label for="calendar-type">Show:</label>
+  <select id="calendar-type" onchange="toggleCalendarBlock()">
+    <option value="">--Choose--</option>
     <option value="events">Important Events</option>
     <option value="meetings">Meeting Dates</option>
   </select>
-
-  <div id="events-section" style="display:none;">
+  
+  <!-- Important Events Calendar -->
+  <div id="events-calendar" style="display:none;">
     <h3>Important Events</h3>
-    <ul>
-      <li>Oct 12, 2025: Team Kickoff</li>
-      <li>Jan 5, 2026: Winter Workshop</li>
-      <!-- Add more event items here -->
-    </ul>
+    <!-- September 2025 Calendar Example -->
+    <div class="month">
+      <h4>September 2025</h4>
+      <table>
+        <tr>
+          <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+          <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td style="background:#FFD700;">5</td><td>6</td>
+        </tr>
+        <tr>
+          <td style="background:#FFD700;">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+        </tr>
+        <tr>
+          <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+        </tr>
+        <tr>
+          <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+        </tr>
+        <tr>
+          <td>28</td><td>29</td><td>30</td><td></td><td></td><td></td><td></td>
+        </tr>
+      </table>
+    </div>
+    <!-- Repeat: October 2025 - March 2026 with similar structure -->
+    <!-- Important dates can be highlighted with background color -->
   </div>
-  <div id="meetings-section" style="display:none;">
+
+  <!-- Meeting Dates Calendar -->
+  <div id="meetings-calendar" style="display:none;">
     <h3>Meeting Dates</h3>
-    <ul>
-      <li>Every Monday at 6pm</li>
-      <li>Dec 1, 2025: Leadership Meeting</li>
-      <!-- Add more meetings here -->
-    </ul>
+    <!-- September 2025 Calendar Example -->
+    <div class="month">
+      <h4>September 2025</h4>
+      <table>
+        <tr>
+          <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+          <td></td><td style="background:#ADD8E6;">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+        </tr>
+        <tr>
+          <td>7</td><td style="background:#ADD8E6;">8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+        </tr>
+        <tr>
+          <td>14</td><td style="background:#ADD8E6;">15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+        </tr>
+        <tr>
+          <td>21</td><td style="background:#ADD8E6;">22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+        </tr>
+        <tr>
+          <td>28</td><td style="background:#ADD8E6;">29</td><td>30</td><td></td><td></td><td></td><td></td>
+        </tr>
+      </table>
+    </div>
+    <!-- Repeat: October 2025 - March 2026, highlighting meeting days -->
   </div>
+
 </div>
 
 <script>
-function showCalendarSection() {
-  var value = document.getElementById('calendar-dropdown').value;
-  document.getElementById('events-section').style.display = value === 'events' ? 'block' : 'none';
-  document.getElementById('meetings-section').style.display = value === 'meetings' ? 'block' : 'none';
+function toggleCalendarBlock() {
+  var type = document.getElementById('calendar-type').value;
+  document.getElementById('events-calendar').style.display = type === 'events' ? 'block' : 'none';
+  document.getElementById('meetings-calendar').style.display = type === 'meetings' ? 'block' : 'none';
 }
 </script>
+
+<style>
+.month table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.month th, .month td {
+  border: 1px solid #999;
+  text-align: center;
+  padding: 3px;
+  width: 14.2%;
+}
+.month th {
+  background: #f2f2f2;
+}
+</style>
