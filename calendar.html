@@ -61,89 +61,97 @@
   
   <!-- Important Events Calendar -->
   <div id="events-calendar" style="display:none;">
-    <h3>Important Events</h3>
-    <!-- September 2025 Calendar Example -->
-    <div class="month">
-      <h4>September 2025</h4>
-      <table>
-        <tr>
-          <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-        </tr>
-        <tr>
-          <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td style="background:#FFD700;">5</td><td>6</td>
-        </tr>
-        <tr>
-          <td style="background:#FFD700;">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
-        </tr>
-        <tr>
-          <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
-        </tr>
-        <tr>
-          <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
-        </tr>
-        <tr>
-          <td>28</td><td>29</td><td>30</td><td></td><td></td><td></td><td></td>
-        </tr>
-      </table>
-    </div>
-    <!-- Repeat: October 2025 - March 2026 with similar structure -->
-    <!-- Important dates can be highlighted with background color -->
-  </div>
-
-  <!-- Meeting Dates Calendar -->
-  <div id="meetings-calendar" style="display:none;">
-    <h3>Meeting Dates</h3>
-    <!-- September 2025 Calendar Example -->
-    <div class="month">
-      <h4>September 2025</h4>
-      <table>
-        <tr>
-          <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-        </tr>
-        <tr>
-          <td></td><td style="background:#ADD8E6;">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
-        </tr>
-        <tr>
-          <td>7</td><td style="background:#ADD8E6;">8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
-        </tr>
-        <tr>
-          <td>14</td><td style="background:#ADD8E6;">15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
-        </tr>
-        <tr>
-          <td>21</td><td style="background:#ADD8E6;">22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
-        </tr>
-        <tr>
-          <td>28</td><td style="background:#ADD8E6;">29</td><td>30</td><td></td><td></td><td></td><td></td>
-        </tr>
-      </table>
-    </div>
-    <!-- Repeat: October 2025 - March 2026, highlighting meeting days -->
-  </div>
-
+   <div class="month">
+  <h4>September 2025</h4>
+  <table>
+    <tr>
+      <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+    </tr>
+    <tr>
+      <td></td><td>1</td>
+      <td style="background:#FFD700;">2<br><small>10:00 AM</small></td>
+      <td>3</td>
+      <td style="background:#FFD700;">4<br><small>2:00 PM</small></td>
+      <td>5</td>
+      <td style="background:#FFD700;">6<br><small>10:00 AM</small></td>
+    </tr>
+    <tr>
+      <td>7</td><td>8</td>
+      <td style="background:#FFD700;">9<br><small>10:00 AM</small></td>
+      <td>10</td>
+      <td style="background:#FFD700;">11<br><small>2:00 PM</small></td>
+      <td>12</td>
+      <td style="background:#FFD700;">13<br><small>10:00 AM</small></td>
+    </tr>
+    <tr>
+      <td>14</td><td>15</td>
+      <td style="background:#FFD700;">16<br><small>10:00 AM</small></td>
+      <td>17</td>
+      <td style="background:#FFD700;">18<br><small>2:00 PM</small></td>
+      <td>19</td>
+      <td style="background:#FFD700;">20<br><small>10:00 AM</small></td>
+    </tr>
+    <tr>
+      <td>21</td><td>22</td>
+      <td style="background:#FFD700;">23<br><small>10:00 AM</small></td>
+      <td>24</td>
+      <td style="background:#FFD700;">25<br><small>2:00 PM</small></td>
+      <td>26</td>
+      <td style="background:#FFD700;">27<br><small>10:00 AM</small></td>
+    </tr>
+    <tr>
+      <td>28</td><td>29</td>
+      <td style="background:#FFD700;">30<br><small>10:00 AM</small></td>
+      <td></td><td></td><td></td><td></td>
+    </tr>
+  </table>
 </div>
 
-<script>
-function toggleCalendarBlock() {
-  var type = document.getElementById('calendar-type').value;
-  document.getElementById('events-calendar').style.display = type === 'events' ? 'block' : 'none';
-  document.getElementById('meetings-calendar').style.display = type === 'meetings' ? 'block' : 'none';
-}
-</script>
-
-<style>
-.month table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 10px;
-  font-size: 12px;
-}
-.month th, .month td {
-  border: 1px solid #999;
-  text-align: center;
-  padding: 3px;
-  width: 14.2%;
-}
-.month th {
-  background: #f2f2f2;
-}
-</style>
+<div id="meetings-calendar" style="display:none;">
+  <h3>Meeting Dates</h3>
+  <div class="month">
+    <h4>September 2025</h4>
+    <table>
+      <tr>
+        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+      </tr>
+      <tr>
+        <td></td><td>1</td>
+        <td style="background:#ADD8E6;">2<br><small>9:00 AM</small></td>
+        <td>3</td>
+        <td style="background:#ADD8E6;">4<br><small>2:00 PM</small></td>
+        <td>5</td>
+        <td style="background:#ADD8E6;">6<br><small>4:00 PM</small></td>
+      </tr>
+      <tr>
+        <td>7</td><td>8</td>
+        <td style="background:#ADD8E6;">9<br><small>9:00 AM</small></td>
+        <td>10</td>
+        <td style="background:#ADD8E6;">11<br><small>2:00 PM</small></td>
+        <td>12</td>
+        <td style="background:#ADD8E6;">13<br><small>4:00 PM</small></td>
+      </tr>
+      <tr>
+        <td>14</td><td>15</td>
+        <td style="background:#ADD8E6;">16<br><small>9:00 AM</small></td>
+        <td>17</td>
+        <td style="background:#ADD8E6;">18<br><small>2:00 PM</small></td>
+        <td>19</td>
+        <td style="background:#ADD8E6;">20<br><small>4:00 PM</small></td>
+      </tr>
+      <tr>
+        <td>21</td><td>22</td>
+        <td style="background:#ADD8E6;">23<br><small>9:00 AM</small></td>
+        <td>24</td>
+        <td style="background:#ADD8E6;">25<br><small>2:00 PM</small></td>
+        <td>26</td>
+        <td style="background:#ADD8E6;">27<br><small>4:00 PM</small></td>
+      </tr>
+      <tr>
+        <td>28</td><td>29</td>
+        <td style="background:#ADD8E6;">30<br><small>9:00 AM</small></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
+</div>
