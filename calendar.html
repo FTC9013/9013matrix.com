@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--Makes the favicon and page title-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>9013 Matrix</title>
   <link rel="icon" type="image/x-icon" href="favicon.png">
 
+  <!--Creates the image background-->
   <style>
     body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; }
     .header {
@@ -24,12 +26,14 @@
   </style>
 </head>
 
+<!--Shows what the heading is-->
 <body>
 <div class="header">
   <h1>9013 Matrix</h1>
   <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
+<!--Navigation bar-->
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="coding.html">Coding</a>
@@ -43,6 +47,7 @@
   <a href="contact.html" style="float:right">Contact</a>
 </div>
 
+<!--Title-->
 <div class="main">
   <h2>Calendar</h2>
 
@@ -59,6 +64,8 @@
   </div>
 
   <!-- Non-meeting dates -->
+
+  <!--describes how the click and show works-->
   <div id="events-calendar" style="display:none;">
     <h3>Event Dates</h3>
     <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
@@ -71,6 +78,8 @@
       </tr>
       </thead>
       <tbody>
+
+      <!--Event days-->
       <tr><td>Tue, Sep 2</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
       <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
       <tr><td>Sat, Sep 6</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
@@ -89,6 +98,8 @@
   </div>
 
   <!-- Meeting dates -->
+
+  <!--describes how the click and show works-->
   <div id="meetings-calendar" style="display:none;">
     <h3>Meeting Dates</h3>
     <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
@@ -101,6 +112,8 @@
       </tr>
       </thead>
       <tbody>
+
+      <!--Meeting days-->
       <tr><td>Tue, Sep 2</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
       <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
       <tr><td>Sat, Sep 6</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
@@ -119,6 +132,7 @@
   </div>
 </div>
 
+<!--Describes what happens when you use teh dropdown-->
 <script>
   function toggleCalendarBlock() {
     var type = document.getElementById('calendar-type').value;
@@ -139,5 +153,6 @@
   }
 </script>
 
+<!--Ends the page-->
 </body>
 </html>
