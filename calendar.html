@@ -48,43 +48,56 @@
   <a href="contact.html" style="float:right">Contact</a>
 </div>
 
+
+
 <!--This shows what is in the page-->
 <div class="main">
-  <select id="calendar-type" onchange="toggleCalendarBlock()">
-    <option value="events">Important Dates</option>
+    <h2>Calendar</h2>
+    <p>Use the drop-down menu to choose you calendar.</p>
+
+  <!--This shows the drop down page-->
+  <select id="Calendar Type" onchange="toggleCalendarBlock()">
+    <option value="select">Select</option>
+    <option value="events">Event Dates</option>
     <option value="meetings">Meeting Dates</option>
   </select>
 
-  <div id="events-calendar" style="display:block;">
-    <h3>Important Dates</h3>
-    <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
-      <thead>
-        <tr style="background: #FFD700;">
-          <th>Date</th>
-          <th>Time</th>
-          <th>Event</th>
-          <th>Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Tue, Sep 2</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-        <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-        <tr><td>Sat, Sep 6</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-        <tr><td>Tue, Sep 9</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-        <tr><td>Thu, Sep 11</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-        <tr><td>Sat, Sep 13</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-        <tr><td>Tue, Sep 16</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-        <tr><td>Thu, Sep 18</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-        <tr><td>Sat, Sep 20</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-        <tr><td>Tue, Sep 23</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-        <tr><td>Thu, Sep 25</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-        <tr><td>Sat, Sep 27</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-        <tr><td>Tue, Sep 30</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <!--Shows what the Dates of non meetings are-->
+  <div id="select-calendar" style="display:block;">
 
-  <div id="meetings-calendar" style="display:none;">
+<!--This shows the non-calendar dates-->
+  <div id="events-calendar" style="display:block;">
+        <h3>Non-Meeting Dates</h3>
+        <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
+          <thead>
+          <tr style="background: #FFD700;">
+            <th>Date</th>
+            <th>Time</th>
+            <th>Event</th>
+            <th>Address</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td>Tue, Sep 2</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+          <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+          <tr><td>Sat, Sep 6</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+          <tr><td>Tue, Sep 9</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+          <tr><td>Thu, Sep 11</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+          <tr><td>Sat, Sep 13</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+          <tr><td>Tue, Sep 16</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+          <tr><td>Thu, Sep 18</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+          <tr><td>Sat, Sep 20</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+          <tr><td>Tue, Sep 23</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+          <tr><td>Thu, Sep 25</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
+          <tr><td>Sat, Sep 27</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
+          <tr><td>Tue, Sep 30</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+
+<!--This shows the meeting dates-->
+    <div id="meetings-calendar" style="display:none;">
     <h3>Meeting Dates</h3>
     <table border="1" style="border-collapse: collapse; width: 100%; font-size: 12px;">
       <thead>
@@ -121,3 +134,4 @@ function toggleCalendarBlock() {
   document.getElementById('meetings-calendar').style.display = (type === 'meetings') ? 'block' : 'none';
 }
 </script>
+</div>
