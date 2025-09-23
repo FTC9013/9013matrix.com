@@ -1,0 +1,511 @@
+<!--Don't mess with this, its a work in progress, ask the mentor about if if you need to (he knows what it is)-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Attendance Tracker with Secure Login & Tabs</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+    margin: 30px;
+  }
+  h1, h2 {
+    margin-top: 0;
+  }
+  /* Tab Buttons */
+  .tab-buttons {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+  }
+  .tab-button {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: border-color 0.3s;
+  }
+  .tab-button:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+  }
+  .tab-button.active {
+    border-bottom-color: #3498db;
+    font-weight: bold;
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #aaa;
+    padding: 8px;
+    text-align: center;
+  }
+  th {
+    background: #eee;
+    color: #333;
+  }
+  .present {
+    background: #27ae60;
+    color: white;
+  }
+  .absent {
+    background: #e74c3c;
+    color: white;
+  }
+  /* Form and inputs */
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  select, input[type=password] {
+    width: 280px;
+    padding: 6px;
+    margin: 6px 0 15px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #3498db;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+  #error {
+    color: red;
+    margin-top: 5px;
+  }
+  #success {
+    color: green;
+    margin-top: 5px;
+  }
+  #password-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #777;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+  <h1>Attendance Tracker</h1>
+
+  <!-- Password Section -->
+  <div id="password-container">
+    <label for="password-input">Enter Password:</label>
+    <input type="password" id="password-input" aria-describedby="password-error" />
+    <div style="margin-top: 6px;">
+      <input type="checkbox" id="show-password" />
+      <label for="show-password">Show Password</label>
+    </div>
+    <button id="password-submit">Submit</button>
+    <div id="password-error" style="color:red; margin-top:8px;"></div>
+  </div>
+
+  <!-- Main Content (hidden initially) -->
+  <div id="main-content" style="display:none;">
+    <!-- Attendance Form -->
+    <section>
+      <h2>Submit Attendance</h2>
+      <form id="attendance-form">
+        <label for="who">Who:</label>
+        <select id="who" required>
+          <option value="">Select your name</option>
+          <option value="0">Alice Johnson</option>
+          <option value="1">Bob Smith</option>
+          <option value="2">Charlie Lee</option>
+          <option value="3">Diana Ross</option>
+          <option value="4">Ethan Clark</option>
+          <option value="5">Fiona Davis</option>
+          <option value="6">George Miller</option>
+          <option value="7">Hannah Scott</option>
+          <option value="8">Ian Wilson</option>
+          <option value="9">Jill Taylor</option>
+          <option value="10">Kevin Brown</option>
+          <option value="11">Laura White</option>
+          <option value="12">Mark Harris</option>
+          <option value="13">Nina Young</option>
+          <option value="14">Oliver King</option>
+          <option value="15">Paula Green</option>
+          <option value="16">Quinn Adams</option>
+          <option value="17">Rachel Carter</option>
+          <option value="18">Steve Evans</option>
+          <option value="19">Tina Allen</option>
+        </select>
+        <label for="day">Day:</label>
+        <select id="day" required></select>
+        <button id="submit-attendance" type="submit">Submit</button>
+        <div>
+          <span id="error" aria-live="assertive"></span>
+          <span id="success" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <nav class="tab-buttons" role="tablist" aria-label="Attendance report tabs">
+      <button class="tab-button active" id="tab1-btn" role="tab" aria-selected="true" aria-controls="tab1-panel" tabindex="0">Attendance Table</button>
+      <button class="tab-button" id="tab2-btn" role="tab" aria-selected="false" aria-controls="tab2-panel" tabindex="-1">Presence Summary</button>
+      <button class="tab-button" id="tab3-btn" role="tab" aria-selected="false" aria-controls="tab3-panel" tabindex="-1">View Attendees</button>
+    </nav>
+
+    <!-- Tab Panels -->
+    <section id="tab1-panel" class="tab-content active" role="tabpanel" aria-labelledby="tab1-btn" tabindex="0">
+      <label for="weeks-select">Show Weeks:</label>
+      <select id="weeks-select">
+        <option value="1">1 Week</option>
+        <option value="2">2 Weeks</option>
+        <option value="3" selected>3 Weeks</option>
+        <option value="all">All</option>
+      </select>
+      <div style="overflow-x:auto;">
+        <table aria-label="Attendance Table">
+          <thead id="table-head"></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="tab2-panel" class="tab-content" role="tabpanel" aria-labelledby="tab2-btn" tabindex="0">
+      <canvas id="presence-chart" aria-label="Presence summary bar chart" role="img" width="900" height="400"></canvas>
+    </section>
+
+    <section id="tab3-panel" class="tab-content" role="tabpanel" aria-labelledby="tab3-btn" tabindex="0">
+      <label for="date-select">Select Date:</label>
+      <select id="date-select"></select>
+      <label for="view-select">View As:</label>
+      <select id="view-select">
+        <option value="names" selected>Names</option>
+        <option value="chart">Chart</option>
+      </select>
+      <div id="attendee-list" style="white-space: pre-wrap; margin-top: 10px; font-weight: bold;"></div>
+      <canvas id="attendee-chart" style="max-width:900px; display:none;" aria-label="Attendee count chart" role="img"></canvas>
+    </section>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Password Logic
+  const passwordContainer = document.getElementById('password-container');
+  const mainContent = document.getElementById('main-content');
+  const passwordInput = document.getElementById('password-input');
+  const passwordSubmit = document.getElementById('password-submit');
+  const passwordError = document.getElementById('password-error');
+  const showPasswordCheck = document.getElementById('show-password');
+
+  passwordSubmit.addEventListener('click', () => {
+    if(passwordInput.value === 'matrix9013team') {
+      passwordContainer.style.display = 'none';
+      mainContent.style.display = 'block';
+      initializePage();
+    } else {
+      passwordError.textContent = 'Incorrect password.';
+    }
+  });
+  passwordInput.addEventListener('keyup', e => { if(e.key === 'Enter') passwordSubmit.click(); });
+  showPasswordCheck.addEventListener('change', () => {
+    passwordInput.type = showPasswordCheck.checked ? 'text' : 'password';
+  });
+
+  // Data & Session Setup
+  const names = [
+    "Alice Johnson", "Bob Smith", "Charlie Lee", "Diana Ross", "Ethan Clark",
+    "Fiona Davis", "George Miller", "Hannah Scott", "Ian Wilson", "Jill Taylor",
+    "Kevin Brown", "Laura White", "Mark Harris", "Nina Young", "Oliver King",
+    "Paula Green", "Quinn Adams", "Rachel Carter", "Steve Evans", "Tina Allen"
+  ];
+  const sessionDays = [0, 2, 4]; // Sunday, Tuesday, Thursday
+
+  let attendanceData, sessionDatesObjs, sessionDates;
+
+  function getSessionDates() {
+    const dates = [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let d = new Date(today);
+    let pastCount = 0;
+    while(pastCount < 3) {
+      d.setDate(d.getDate() - 1);
+      if(sessionDays.includes(d.getDay())) {
+        dates.unshift(new Date(d));
+        pastCount++;
+      }
+    }
+    if(sessionDays.includes(today.getDay())) dates.push(new Date(today));
+    d = new Date(today);
+    if(!sessionDays.includes(today.getDay())) d.setDate(d.getDate() + 1);
+    let futureCount = 0;
+    while(futureCount < 10) {
+      if(sessionDays.includes(d.getDay())) {
+        dates.push(new Date(d));
+        futureCount++;
+      }
+      d.setDate(d.getDate() + 1);
+    }
+    return dates;
+  }
+
+  function initializePage() {
+    sessionDatesObjs = getSessionDates();
+    sessionDates = sessionDatesObjs.map(d => d.toISOString().slice(0,10));
+
+    attendanceData = JSON.parse(localStorage.getItem('attendanceData') || 'null');
+    if(!attendanceData || attendanceData.length !== names.length) {
+      attendanceData = Array(names.length).fill(null).map(() => Array(sessionDates.length).fill(false));
+      localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
+    }
+    populateSelectors();
+    renderAttendanceTable();
+    renderPresenceChart();
+    renderAttendees();
+    setupEventListeners();
+    initTabs();
+  }
+
+  function populateSelectors(){
+    const who = document.getElementById('who');
+    who.value = localStorage.getItem('lastUser') || '';
+    const day = document.getElementById('day');
+    day.innerHTML = '';
+    sessionDatesObjs.forEach((d,i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = d.toLocaleDateString(undefined, {weekday:'long', month:'short', day:'numeric'});
+      day.appendChild(opt);
+    });
+    day.selectedIndex = sessionDates.length -1;
+    const dateSelect = document.getElementById('date-select');
+    dateSelect.innerHTML = '';
+    sessionDatesObjs.forEach((d,i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = d.toLocaleDateString(undefined, {weekday:'long', month:'short', day:'numeric'});
+      dateSelect.appendChild(opt);
+    });
+    dateSelect.selectedIndex = 0;
+  }
+
+  // Table Render
+  function renderAttendanceTable() {
+    const weeksSel = document.getElementById('weeks-select').value;
+    let weeksNum = weeksSel === 'all' ? sessionDates.length : Number(weeksSel)*3;
+    weeksNum = Math.min(weeksNum, sessionDates.length);
+    let startIndex = sessionDates.length - weeksNum;
+
+    let headHTML = '<tr><th>Name</th>';
+    for(let i=startIndex; i < sessionDates.length; i++) {
+      headHTML += `<th>${sessionDates[i]}</th>`;
+    }
+    headHTML += '</tr>';
+    document.getElementById('table-head').innerHTML = headHTML;
+
+    let bodyHTML = '';
+    for(let i=0; i < names.length; i++) {
+      bodyHTML += `<tr><td>${names[i]}</td>`;
+      for(let j=startIndex; j < sessionDates.length; j++) {
+        bodyHTML += attendanceData[i][j] ? '<td class="present">&#10003;</td>' : '<td class="absent">-</td>';
+      }
+      bodyHTML += '</tr>';
+    }
+    document.getElementById('table-body').innerHTML = bodyHTML;
+  }
+
+  // Presence Chart Render
+  let presenceChart = null;
+  function renderPresenceChart() {
+    const ctx = document.getElementById('presence-chart').getContext('2d');
+    const counts = sessionDates.map((_, idx) => attendanceData.reduce((acc, row) => acc + (row[idx] ? 1 : 0), 0));
+    if(presenceChart) {
+      presenceChart.data.datasets[0].data = counts;
+      presenceChart.update();
+    } else {
+      presenceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: sessionDates,
+          datasets: [{
+            label: 'Number Present',
+            backgroundColor: '#27ae60',
+            borderColor: '#1e8449',
+            borderWidth: 1,
+            data: counts
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero:true, stepSize:1, max: names.length }}
+        }
+      });
+    }
+  }
+
+  // Attendees View Render
+  let attendeeChartInstance = null;
+  function renderAttendees() {
+    const dateSelect = document.getElementById('date-select');
+    const viewSelect = document.getElementById('view-select');
+    const idx = Number(dateSelect.value);
+    const attendeesList = document.getElementById('attendee-list');
+    const attendeeChart = document.getElementById('attendee-chart');
+
+    if(viewSelect.value === 'names') {
+      attendeeChart.style.display = 'none';
+      attendeesList.style.display = 'block';
+      let attendees = [];
+      for(let i=0; i < names.length; i++) {
+        if(attendanceData[i][idx]) attendees.push(names[i]);
+      }
+      attendeesList.textContent = attendees.length ? attendees.join(', ') : 'No attendees.';
+    } else {
+      attendeesList.style.display = 'none';
+      attendeeChart.style.display = 'block';
+      let count = attendanceData.reduce((acc,row) => acc + (row[idx] ? 1 : 0), 0);
+      if(attendeeChartInstance) {
+        attendeeChartInstance.data.datasets[0].data = [count];
+        attendeeChartInstance.update();
+      } else {
+        attendeeChartInstance = new Chart(attendeeChart.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: [sessionDates[idx]],
+            datasets: [{
+              label: 'Number Present',
+              backgroundColor: '#27ae60',
+              borderColor: '#1e8449',
+              borderWidth: 1,
+              data: [count]
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true, max: names.length, stepSize: 1 } }
+          }
+        });
+      }
+    }
+  }
+
+  // Tab Navigation Logic
+  function initTabs() {
+    const tabs = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Reset all tabs
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        // Reset tab panels
+        tabPanels.forEach(p => {
+          p.classList.remove('active');
+          p.style.display = 'none';
+        });
+        // Activate chosen tab
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+        // Show related panel
+        const panelId = tab.id.replace('-btn', '-panel');
+        const panel = document.getElementById(panelId);
+        panel.classList.add('active');
+        panel.style.display = 'block';
+
+        if(panelId === 'tab2-panel') renderPresenceChart();
+        else if(panelId === 'tab3-panel') renderAttendees();
+      });
+    });
+  }
+
+  // Setup event listeners for selects and form
+  function setupEventListeners() {
+    document.getElementById('weeks-select').addEventListener('change', e => renderAttendanceTable(e.target.value));
+    document.getElementById('date-select').addEventListener('change', renderAttendees);
+    document.getElementById('view-select').addEventListener('change', renderAttendees);
+
+    document.getElementById('who').addEventListener('change', e => {
+      localStorage.setItem('lastUser', e.target.value);
+      const idx = Number(e.target.value);
+      const todayStr = new Date().toISOString().slice(0,10);
+      const errorSpan = document.getElementById('error');
+      const submitBtn = document.getElementById('submit-attendance');
+      if(localStorage.getItem('lastSubmission_'+idx) === todayStr) {
+        errorSpan.textContent = 'You have already submitted attendance today.';
+        submitBtn.disabled = true;
+      } else {
+        errorSpan.textContent = '';
+        submitBtn.disabled = false;
+      }
+    });
+
+    document.getElementById('attendance-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const userIdx = Number(document.getElementById('who').value);
+      const dayIdx = Number(document.getElementById('day').value);
+      const errorSpan = document.getElementById('error');
+      const successSpan = document.getElementById('success');
+      const submitBtn = document.getElementById('submit-attendance');
+
+      errorSpan.textContent = '';
+      successSpan.textContent = '';
+
+      if(isNaN(userIdx)) {
+        errorSpan.textContent = 'Please select your name.';
+        return;
+      }
+      if(isNaN(dayIdx)) {
+        errorSpan.textContent = 'Please select a valid day.';
+        return;
+      }
+      const todayStr = new Date().toISOString().slice(0,10);
+      if(sessionDates[dayIdx] !== todayStr) {
+        errorSpan.textContent = 'You can only submit attendance for today.';
+        return;
+      }
+      if(attendanceData[userIdx][dayIdx]) {
+        errorSpan.textContent = 'You already submitted attendance today.';
+        submitBtn.disabled = true;
+        return;
+      }
+
+      attendanceData[userIdx][dayIdx] = true;
+      localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
+      
+      localStorage.setItem('lastSubmission_'+userIdx, todayStr);
+      localStorage.setItem('lastUser', userIdx);
+
+      renderAttendanceTable(document.getElementById('weeks-select').value);
+      renderPresenceChart();
+
+      successSpan.textContent = 'Attendance submitted successfully!';
+      submitBtn.disabled = true;
+
+      setTimeout(() => { successSpan.textContent = ''; }, 3000);
+    });
+  }
+
+</script>
+</body>
+</html>
