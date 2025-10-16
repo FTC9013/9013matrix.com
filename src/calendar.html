@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--Makes the favicon and page title-->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>9013 Matrix</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-
-  <!--Creates the image background-->
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; padding-bottom: 38px; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 38px;
+    }
+
     .header {
       background: url("The-matrix-logo.svg.png") no-repeat center center;
       background-size: cover;
@@ -18,25 +21,51 @@
       padding: 40px 0;
       text-align: center;
     }
-    .navbar { overflow: hidden; background-color: #333; }
-    .navbar a { float: left; display: block; color: white; text-align: center; padding: 14px 20px; text-decoration: none; }
-    .navbar a:hover { background-color: #ddd; color: black; }
-    .main { padding: 20px; }
-    .footer { background: #333; color: white; text-align: center; padding: 10px 0; position: fixed; width: 100%; bottom: 0; }
+
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .main {
+      padding: 20px;
+    }
+
+    .footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
   </style>
 </head>
 
-<!--Shows what the heading is-->
 <body>
 <div class="header">
   <h1>9013 Matrix</h1>
   <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<!--Navigation bar-->
 <div class="navbar">
   <a href="index.html">Home</a>
-  <a href="programming.html">Programming</a>
+  <a href="programming.html">Programmers</a>
   <a href="mechanics.html">Mechanics</a>
   <a href="web_developing.html">Web Developing</a>
   <a href="info.html">Info</a>
@@ -47,28 +76,23 @@
   <a href="contact.html" style="float:right">Contact</a>
 </div>
 
-<!--Title-->
 <div class="main">
   <h2>Calendar</h2>
 
-  <!-- Dropdown menu -->
   <select id="calendar-type" onchange="toggleCalendarBlock()">
     <option value="select">Select</option>
     <option value="events">Event Dates</option>
     <option value="meetings">Meeting Dates</option>
   </select>
 
-  <!-- Home page message -->
   <div id="home-calendar" style="display:block;">
     <p>Please select a calendar type above to view.</p>
   </div>
 
-  <!-- Non-meeting dates -->
-
-  <!--describes how the click and show works-->
   <div id="events-calendar" style="display:none;">
-    <h3>Event Dates</h3>
-    <table border="1" style="border-collapse: collapse; width: 100%; font-size: 16px;">
+
+    <h3>Event Calendar</h3>
+    <table id="fundraisingTable" border="1" style="border-collapse: collapse; width: 100%; font-size: 16px;">
       <thead>
       <tr style="background: #FFD700;">
         <th>Date</th>
@@ -78,28 +102,34 @@
       </tr>
       </thead>
       <tbody>
-
-      <!--Event days-->
-      <tr><td>Tue, Sep 2</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-      <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-      <tr><td>Sat, Sep 6</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-      <tr><td>Tue, Sep 9</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-      <tr><td>Thu, Sep 11</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-      <tr><td>Sat, Sep 13</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-      <tr><td>Tue, Sep 16</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-      <tr><td>Thu, Sep 18</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-      <tr><td>Sat, Sep 20</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-      <tr><td>Tue, Sep 23</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
-      <tr><td>Thu, Sep 25</td><td>2:00 PM</td><td>Example event for important dates</td><td>456 Example Ave.</td></tr>
-      <tr><td>Sat, Sep 27</td><td>10:00 AM</td><td>Example event for important dates</td><td>789 Example Rd.</td></tr>
-      <tr><td>Tue, Sep 30</td><td>10:00 AM</td><td>Example event for important dates</td><td>123 Example St.</td></tr>
+      <tr>
+        <td>Sat, Oct 4-5</td>
+        <td>10:00 AM - 3:00 PM</td>
+        <td><a href="https://brevardzoo.org/special-events/boo-at-the-zoo/" target="_blank">Boo at the zoo</a></td>
+        <td><a href="https://www.google.com/maps/place/Brevard+Zoo/@28.2249933,-80.7164305,17z/" target="_blank">8225 N Wickham Rd, Melbourne</a></td>
+      </tr>
+      <tr>
+        <td>Sat, Oct 11</td>
+        <td>1:00 PM - 5:00 PM</td>
+        <td><a href="https://www.collinsaerospace.com/" target="_blank">Collins Aerospace</a></td>
+        <td><a href="https://www.google.com/maps/place/Collins+Aerospace/@28.0918746,-80.6539773,15z/" target="_blank">795 W NASA Blvd</a></td>
+      </tr>
+      <tr>
+        <td>Sat, Oct 15</td>
+        <td>11:00 AM - 8:00 PM</td>
+        <td>Chick-fil-A</td>
+        <td><a href="https://www.google.com/maps/place/Chick-fil-A/@28.3565581,-80.6863294,17z/" target="_blank">785 E Merritt Island Cswy</a></td>
+      </tr>
+      <tr>
+        <td>Sat, Oct 18</td>
+        <td>9:30 AM - 3:00 PM</td>
+        <td>Fall Festival</td>
+        <td><a href="https://www.google.com/maps/place/65+Needle+Blvd,+Merritt+Island,+FL+32953/@28.3652132,-80.7009881,17z/" target="_blank">65 Needle Blvd, Merritt Island</a></td>
+      </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Meeting dates -->
-
-  <!--describes how the click and show works-->
   <div id="meetings-calendar" style="display:none;">
     <h3>Meeting Dates</h3>
     <table border="1" style="border-collapse: collapse; width: 100%; font-size: 16px;">
@@ -111,38 +141,23 @@
         <th>Address</th>
       </tr>
       </thead>
-      <tbody>
-
-      <!--Meeting days-->
-      <tr><td>Tue, Sep 2</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
-      <tr><td>Thu, Sep 4</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
-      <tr><td>Sat, Sep 6</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
-      <tr><td>Tue, Sep 9</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
-      <tr><td>Thu, Sep 11</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
-      <tr><td>Sat, Sep 13</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
-      <tr><td>Tue, Sep 16</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
-      <tr><td>Thu, Sep 18</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
-      <tr><td>Sat, Sep 20</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
-      <tr><td>Tue, Sep 23</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
-      <tr><td>Thu, Sep 25</td><td>2:00 PM</td><td>Meeting</td><td>654 Meeting Ave.</td></tr>
-      <tr><td>Sat, Sep 27</td><td>4:00 PM</td><td>Meeting</td><td>987 Meeting Rd.</td></tr>
-      <tr><td>Tue, Sep 30</td><td>9:00 AM</td><td>Meeting</td><td>321 Meeting St.</td></tr>
+      <tbody id="meetingTable">
+      <!-- Meeting rows get dynamically inserted here -->
       </tbody>
     </table>
   </div>
 </div>
 
-<!--Describes what happens when you use teh dropdown-->
+<div class="footer">Team 9013 Matrix</div>
+
 <script>
   function toggleCalendarBlock() {
-    var type = document.getElementById('calendar-type').value;
+    const type = document.getElementById('calendar-type').value;
 
-    // Hide everything first
     document.getElementById('home-calendar').style.display = 'none';
     document.getElementById('events-calendar').style.display = 'none';
     document.getElementById('meetings-calendar').style.display = 'none';
 
-    // Show chosen section
     if (type === 'select') {
       document.getElementById('home-calendar').style.display = 'block';
     } else if (type === 'events') {
@@ -151,10 +166,93 @@
       document.getElementById('meetings-calendar').style.display = 'block';
     }
   }
+
+  function parseEventDate(dateStr) {
+    // Grab date after comma, trim, split on dash if a range, take just first date part
+    const datePart = dateStr.split(',')[1].trim().split('-')[0].trim();
+    // Append current year for parsing
+    return new Date(`${datePart} ${new Date().getFullYear()}`);
+  }
+
+  function filterPastEventsFromTable(tableId) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // normalize to midnight
+    const table = document.getElementById(tableId);
+    if (!table) return;
+
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    rows.forEach(row => {
+      const dateText = row.cells[0].textContent;
+      const eventDate = parseEventDate(dateText);
+      eventDate.setHours(0, 0, 0, 0);
+      if (eventDate < today) {
+        row.remove();
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Delete past event and fundraising dates
+    filterPastEventsFromTable('eventsTable');
+    filterPastEventsFromTable('fundraisingTable');
+
+    // Existing meeting render code
+    const meetingTable = document.getElementById("meetingTable");
+    const meetingDays = [2, 4, 6];
+    const today = new Date();
+    const meetingsToShow = 20;
+    const location = "Merritt Island High School";
+    const eventName = "9013 Meeting";
+    const meetingTimes = {
+      2: "4:00 PM",
+      4: "4:00 PM",
+      6: "12:00 PM"
+    };
+
+    function isTodayMeetingDay() {
+      return meetingDays.includes(today.getDay());
+    }
+
+    function getNextMeetingDates(count) {
+      const dates = [];
+      let current = new Date(today);
+
+      if (isTodayMeetingDay()) {
+        dates.push(new Date(current));
+      }
+
+      while (dates.length < count) {
+        current.setDate(current.getDate() + 1);
+        if (meetingDays.includes(current.getDay())) {
+          dates.push(new Date(current));
+        }
+      }
+      return dates;
+    }
+
+    function renderMeetings() {
+      const upcomingMeetings = getNextMeetingDates(meetingsToShow);
+      meetingTable.innerHTML = "";
+
+      upcomingMeetings.forEach(date => {
+        const day = date.toLocaleDateString("en-US", { weekday: "long" });
+        const formatted = date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+        const time = meetingTimes[date.getDay()];
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${day}, ${formatted}</td>
+          <td>${time}</td>
+          <td>${eventName}</td>
+          <td>${location}</td>
+        `;
+        meetingTable.appendChild(row);
+      });
+    }
+
+    renderMeetings();
+  });
 </script>
-  <div class="footer">
-    Team 9013 Matrix
-  </div>
-<!--Ends the page-->
 </body>
+
 </html>
