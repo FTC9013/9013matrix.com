@@ -23,6 +23,7 @@
             text-align: center;
         }
 
+        /* Default navbar */
         .navbar {
             overflow: hidden;
             background-color: #333;
@@ -56,10 +57,14 @@
             bottom: 0;
         }
 
-        /* Hide navbar completely on small screens */
-        @media screen and (max-width: 600px) {
-            .navbar {
+        /* Hide desktop navbar on small screens */
+        @media screen and (max-width: 700px) {
+            .navbar a {
                 display: none;
+            }
+
+            .navbar {
+                position: relative;
             }
 
             .hamburger {
@@ -67,24 +72,25 @@
             }
         }
 
-        /* Hamburger menu button */
+        /* Hamburger icon */
         .hamburger {
             display: none;
             position: absolute;
-            top: 15px;
             right: 20px;
+            top: 10px;
             cursor: pointer;
-            z-index: 1000;
+            padding: 10px;
         }
 
         .hamburger div {
-            width: 30px;
-            height: 4px;
-            background-color: #333;
+            width: 28px;
+            height: 3px;
+            background-color: white;
             margin: 5px 0;
             transition: 0.4s;
         }
 
+        /* Hamburger animation */
         .change .bar1 {
             transform: rotate(-45deg) translate(-6px, 6px);
         }
@@ -97,27 +103,44 @@
             transform: rotate(45deg) translate(-6px, -6px);
         }
 
-        /* Popup mobile menu */
+        /* Mobile dropdown menu */
         .mobile-menu {
             display: none;
-            position: absolute;
-            top: 60px;
-            right: 10px;
             background-color: #333;
-            border-radius: 5px;
-            width: 200px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.show {
+            display: block;
+            animation: slideDown 0.3s ease-in-out;
         }
 
         .mobile-menu a {
-            color: white;
             display: block;
-            padding: 12px;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
             text-decoration: none;
+            border-top: 1px solid #444;
         }
 
         .mobile-menu a:hover {
-            background-color: #575757;
+            background-color: #ddd;
+            color: black;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -128,8 +151,8 @@
     <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<!-- Normal navbar (hidden on phones) -->
-<div class="navbar" id="mainNavbar">
+<!-- Navbar area -->
+<div class="navbar" id="navbar">
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
     <a href="mechanics.html">Mechanics</a>
@@ -140,16 +163,16 @@
     <a href="quote_board.html">Quote Board</a>
     <a href="awards.html">Awards</a>
     <a href="contact.html" style="float:right">Contact</a>
+
+    <!-- Hamburger icon for mobile -->
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
 </div>
 
-<!-- Hamburger icon (only visible on small screens) -->
-<div class="hamburger" onclick="toggleMenu(this)">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-</div>
-
-<!-- Dropdown-style mobile menu -->
+<!-- Mobile dropdown -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
@@ -172,16 +195,18 @@
         This web-site is active but still in progress, we are a small team so give us time to get it ready.</p>
 </div>
 
-<div class="footer">Team 9013 Matrix</div>
+<div class="footer">
+    Team 9013 Matrix
+</div>
 
 <script>
     function toggleMenu(x) {
         x.classList.toggle("change");
         var menu = document.getElementById("mobileMenu");
-        if (menu.style.display === "block") {
-            menu.style.display = "none";
+        if (menu.classList.contains("show")) {
+            menu.classList.remove("show");
         } else {
-            menu.style.display = "block";
+            menu.classList.add("show");
         }
     }
 </script>
