@@ -56,7 +56,7 @@
             bottom: 0;
         }
 
-        /* Hide navbar completely on small screens */
+        /* Hide regular navbar on mobile */
         @media screen and (max-width: 600px) {
             .navbar {
                 display: none;
@@ -67,10 +67,10 @@
             }
         }
 
-        /* Hamburger menu button */
+        /* Hamburger styling */
         .hamburger {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 15px;
             right: 20px;
             cursor: pointer;
@@ -79,9 +79,9 @@
 
         .hamburger div {
             width: 30px;
-            height: 4px;
+            height: 3px;
             background-color: #333;
-            margin: 5px 0;
+            margin: 6px 0;
             transition: 0.4s;
         }
 
@@ -97,16 +97,24 @@
             transform: rotate(45deg) translate(-6px, -6px);
         }
 
-        /* Popup mobile menu */
+        /* Mobile menu overlay */
         .mobile-menu {
-            display: none;
-            position: absolute;
+            position: fixed;
             top: 60px;
             right: 10px;
             background-color: #333;
             border-radius: 5px;
-            width: 200px;
+            width: 220px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            z-index: 999;
+        }
+
+        .mobile-menu.show {
+            max-height: 500px;
+            transition: max-height 0.4s ease-in;
         }
 
         .mobile-menu a {
@@ -128,7 +136,7 @@
     <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<!-- Normal navbar (hidden on phones) -->
+<!-- Desktop Navbar -->
 <div class="navbar" id="mainNavbar">
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
@@ -142,14 +150,14 @@
     <a href="contact.html" style="float:right">Contact</a>
 </div>
 
-<!-- Hamburger icon (only visible on small screens) -->
-<div class="hamburger" onclick="toggleMenu(this)">
+<!-- Hamburger icon -->
+<div class="hamburger" id="hamburger" onclick="toggleMenu(this)">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
 </div>
 
-<!-- Dropdown-style mobile menu -->
+<!-- Sliding mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
@@ -172,17 +180,15 @@
         This web-site is active but still in progress, we are a small team so give us time to get it ready.</p>
 </div>
 
-<div class="footer">Team 9013 Matrix</div>
+<div class="footer">
+    Team 9013 Matrix
+</div>
 
 <script>
     function toggleMenu(x) {
         x.classList.toggle("change");
         var menu = document.getElementById("mobileMenu");
-        if (menu.style.display === "block") {
-            menu.style.display = "none";
-        } else {
-            menu.style.display = "block";
-        }
+        menu.classList.toggle("show");
     }
 </script>
 </body>
