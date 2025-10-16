@@ -23,6 +23,7 @@
             text-align: center;
         }
 
+        /* Default navbar */
         .navbar {
             overflow: hidden;
             background-color: #333;
@@ -56,10 +57,14 @@
             bottom: 0;
         }
 
-        /* Hide regular navbar on mobile */
-        @media screen and (max-width: 600px) {
-            .navbar {
+        /* Hide desktop navbar on small screens */
+        @media screen and (max-width: 700px) {
+            .navbar a {
                 display: none;
+            }
+
+            .navbar {
+                position: relative;
             }
 
             .hamburger {
@@ -67,24 +72,25 @@
             }
         }
 
-        /* Hamburger styling */
+        /* Hamburger icon */
         .hamburger {
             display: none;
-            position: fixed;
-            top: 15px;
+            position: absolute;
             right: 20px;
+            top: 10px;
             cursor: pointer;
-            z-index: 1000;
+            padding: 10px;
         }
 
         .hamburger div {
-            width: 30px;
+            width: 28px;
             height: 3px;
-            background-color: #333;
-            margin: 6px 0;
+            background-color: white;
+            margin: 5px 0;
             transition: 0.4s;
         }
 
+        /* Hamburger animation */
         .change .bar1 {
             transform: rotate(-45deg) translate(-6px, 6px);
         }
@@ -97,35 +103,44 @@
             transform: rotate(45deg) translate(-6px, -6px);
         }
 
-        /* Mobile menu overlay */
+        /* Mobile dropdown menu */
         .mobile-menu {
-            position: fixed;
-            top: 60px;
-            right: 10px;
+            display: none;
             background-color: #333;
-            border-radius: 5px;
-            width: 220px;
-            max-height: 0;
+            width: 100%;
             overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            z-index: 999;
+            transition: max-height 0.3s ease-out;
         }
 
         .mobile-menu.show {
-            max-height: 500px;
-            transition: max-height 0.4s ease-in;
+            display: block;
+            animation: slideDown 0.3s ease-in-out;
         }
 
         .mobile-menu a {
-            color: white;
             display: block;
-            padding: 12px;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
             text-decoration: none;
+            border-top: 1px solid #444;
         }
 
         .mobile-menu a:hover {
-            background-color: #575757;
+            background-color: #ddd;
+            color: black;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -136,8 +151,8 @@
     <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<!-- Desktop Navbar -->
-<div class="navbar" id="mainNavbar">
+<!-- Navbar area -->
+<div class="navbar" id="navbar">
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
     <a href="mechanics.html">Mechanics</a>
@@ -148,16 +163,16 @@
     <a href="quote_board.html">Quote Board</a>
     <a href="awards.html">Awards</a>
     <a href="contact.html" style="float:right">Contact</a>
+
+    <!-- Hamburger icon for mobile -->
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
 </div>
 
-<!-- Hamburger icon -->
-<div class="hamburger" id="hamburger" onclick="toggleMenu(this)">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-</div>
-
-<!-- Sliding mobile menu -->
+<!-- Mobile dropdown -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
@@ -188,7 +203,11 @@
     function toggleMenu(x) {
         x.classList.toggle("change");
         var menu = document.getElementById("mobileMenu");
-        menu.classList.toggle("show");
+        if (menu.classList.contains("show")) {
+            menu.classList.remove("show");
+        } else {
+            menu.classList.add("show");
+        }
     }
 </script>
 </body>
