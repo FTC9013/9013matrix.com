@@ -26,7 +26,6 @@
     .navbar {
       overflow: hidden;
       background-color: #333;
-      position: relative;
     }
 
     .navbar a {
@@ -34,47 +33,14 @@
       display: block;
       color: white;
       text-align: center;
-      padding: 14px 20px;
+      padding: 14px 16px;
       text-decoration: none;
+      font-size: 16px;
     }
 
     .navbar a:hover {
       background-color: #ddd;
       color: black;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 26px;
-      color: white;
-      cursor: pointer;
-      float: right;
-      padding: 14px 20px;
-      user-select: none;
-    }
-
-    @media screen and (max-width: 768px) {
-      .navbar a {
-        display: none;
-        float: none;
-        width: 100%;
-        text-align: left;
-        padding-left: 20px;
-        border-top: 1px solid #444;
-      }
-
-      .navbar a.contact {
-        float: none;
-        border-top: none;
-      }
-
-      .navbar.responsive a {
-        display: block;
-      }
-
-      .hamburger {
-        display: block;
-      }
     }
 
     .main {
@@ -94,18 +60,55 @@
     .quote {
       margin: 0 0 10px 0;
     }
+
+    /* Hamburger menu styles */
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 14px 20px;
+      background-color: #333;
+      color: white;
+      text-align: left;
+      user-select: none;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+      .navbar a {
+        display: none;
+        float: none;
+        width: 100%;
+        text-align: left;
+        background-color: #444;
+        border-top: 1px solid #555;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .navbar.responsive a {
+        display: block;
+      }
+    }
   </style>
 </head>
 
 <body>
+
 <div class="header">
   <h1>9013 Matrix</h1>
   <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
+<!-- Hamburger Icon (Mobile) -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- Nav bar -->
 <div class="navbar" id="navbar">
   <a href="index.html">Home</a>
-  <a href="programming.html">Programmers</a>
+  <a href="programming.html">Programming</a>
   <a href="mechanics.html">Mechanics</a>
   <a href="web_developing.html">Web Developing</a>
   <a href="info.html">Info</a>
@@ -113,9 +116,7 @@
   <a href="fundraising.html">Fundraising</a>
   <a href="quote_board.html">Quote Board</a>
   <a href="awards.html">Awards</a>
-  <a href="contact.html" class="contact" style="float:right">Contact</a>
-
-  <div class="hamburger" id="hamburger">&#9776;</div>
+  <a href="contact.html">Contact</a>
 </div>
 
 <div class="main">
@@ -142,12 +143,10 @@
 </div>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const navbar = document.getElementById('navbar');
-
-  hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('responsive');
-  });
+  function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("responsive");
+  }
 </script>
 </body>
 
