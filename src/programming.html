@@ -18,7 +18,7 @@
         .header {
           background: url("The-matrix-logo.svg.png") no-repeat center center;
           background-size: cover;
-          color: black; /* Changed from white to black */
+          color: black;
           padding: 40px 0;
           text-align: center;
         }
@@ -49,7 +49,7 @@
           font-size: 26px;
           color: white;
           cursor: pointer;
-          float: right;
+          float: left; /* Hamburger floats left */
           padding: 14px 20px;
           user-select: none;
         }
@@ -102,6 +102,7 @@
 </div>
 
 <div class="navbar" id="navbar">
+    <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger on the left -->
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
     <a href="mechanics.html">Mechanics</a>
@@ -112,18 +113,15 @@
     <a href="quote_board.html">Quote Board</a>
     <a href="awards.html">Awards</a>
     <a href="contact.html" class="contact" style="float:right">Contact</a>
-
-    <!-- Hamburger icon -->
-    <div class="hamburger" id="hamburger">&#9776;</div>
 </div>
 
 <div class="main">
     <h2>Programming</h2>
-    <p>Here we have a programmer to explain whats happening.
+    <p>Here we have a programmer to explain what’s happening.
         "Hi! Thanks for having me! I'm so happy to be here!
         Basically, we program the code that runs the robot. We use Java to program.
-        We code everything, from the autonomous, obviously, to even the teleop and the endgame!"  he said.
-        Now look at the proggamming Repositoy. NOW!</p>
+        We code everything, from the autonomous, obviously, to even the teleop and the endgame!" he said.
+        Now look at the programming Repository. NOW!</p>
     <p><a href="https://github.com/FTC9013/Team-9013-App" target="_blank">Programming repository</a></p>
 </div>
 

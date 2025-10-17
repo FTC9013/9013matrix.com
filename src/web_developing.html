@@ -18,7 +18,7 @@
     .header {
       background: url("The-matrix-logo.svg.png") no-repeat center center;
       background-size: cover;
-      color: black; /* Changed from white to black */
+      color: black;
       padding: 40px 0;
       text-align: center;
     }
@@ -49,7 +49,7 @@
       font-size: 26px;
       color: white;
       cursor: pointer;
-      float: right;
+      float: left; /* changed to left */
       padding: 14px 20px;
       user-select: none;
     }
@@ -65,7 +65,8 @@
         border-top: 1px solid #444;
       }
 
-      .navbar a[style*="float:right"] {
+      /* Make sure contact does not float right in responsive */
+      .navbar a.contact {
         float: none !important;
         border-top: none;
       }
@@ -102,6 +103,9 @@
 </div>
 
 <div class="navbar" id="navbar">
+  <!-- Hamburger moved BEFORE links -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
   <a href="index.html">Home</a>
   <a href="programming.html">Programming</a>
   <a href="mechanics.html">Mechanics</a>
@@ -111,9 +115,8 @@
   <a href="fundraising.html">Fundraising</a>
   <a href="quote_board.html">Quote Board</a>
   <a href="awards.html">Awards</a>
-  <a href="contact.html" style="float:right">Contact</a>
-
-  <div class="hamburger" id="hamburger">&#9776;</div>
+  <!-- Added class contact instead of inline style -->
+  <a href="contact.html" class="contact">Contact</a>
 </div>
 
 <div class="main">

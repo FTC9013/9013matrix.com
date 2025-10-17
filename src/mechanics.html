@@ -18,7 +18,7 @@
     .header {
       background: url("The-matrix-logo.svg.png") no-repeat center center;
       background-size: cover;
-      color: black; /* Changed from white to black */
+      color: black;
       padding: 40px 0;
       text-align: center;
     }
@@ -49,7 +49,7 @@
       font-size: 26px;
       color: white;
       cursor: pointer;
-      float: right;
+      float: left; /* changed from right to left */
       padding: 14px 20px;
       user-select: none;
     }
@@ -102,6 +102,9 @@
 </div>
 
 <div class="navbar" id="navbar">
+  <!-- Hamburger icon moved BEFORE the links -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
   <a href="index.html">Home</a>
   <a href="programming.html">Programming</a>
   <a href="mechanics.html">Mechanics</a>
@@ -112,9 +115,6 @@
   <a href="quote_board.html">Quote Board</a>
   <a href="awards.html">Awards</a>
   <a href="contact.html" class="contact" style="float:right">Contact</a>
-
-  <!-- Hamburger icon -->
-  <div class="hamburger" id="hamburger">&#9776;</div>
 </div>
 
 <div class="main">
