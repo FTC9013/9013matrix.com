@@ -57,24 +57,26 @@
             bottom: 0;
         }
 
-        /* Hamburger menu styles (hidden by default) */
+        /* Hamburger menu styles */
         .hamburger {
             display: none;
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
             padding: 14px 20px;
-            color: white;
             background-color: #333;
-            user-select: none;
+            color: white;
+            text-align: left;
         }
 
-        /* iPhone-specific media query (typical iPhone sizes) */
-        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
             .navbar a {
                 display: none;
                 float: none;
+                width: 100%;
                 text-align: left;
                 background-color: #444;
+                border-top: 1px solid #555;
             }
 
             .hamburger {
@@ -83,19 +85,19 @@
 
             .navbar.responsive a {
                 display: block;
-                padding-left: 20px;
             }
         }
     </style>
 </head>
 
 <body>
+
 <div class="header">
     <h1>9013 Matrix</h1>
     <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<!-- Hamburger Icon (iPhone only) -->
+<!-- Hamburger Icon (Mobile) -->
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
 <!-- Nav bar -->

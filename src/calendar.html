@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>9013 Matrix</title>
   <link rel="icon" type="image/x-icon" href="favicon.png" />
+
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -34,6 +35,7 @@
       text-align: center;
       padding: 14px 20px;
       text-decoration: none;
+      font-size: 16px;
     }
 
     .navbar a:hover {
@@ -54,16 +56,52 @@
       width: 100%;
       bottom: 0;
     }
+
+    /* Hamburger menu styles */
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 14px 20px;
+      background-color: #333;
+      color: white;
+      text-align: left;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+      .navbar a {
+        display: none;
+        float: none;
+        width: 100%;
+        text-align: left;
+        background-color: #444;
+        border-top: 1px solid #555;
+      }
+
+      .navbar.responsive a {
+        display: block;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
   </style>
 </head>
 
 <body>
+
 <div class="header">
   <h1>9013 Matrix</h1>
   <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<div class="navbar">
+<!-- Hamburger icon (mobile) -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- Navigation bar -->
+<div class="navbar" id="navbar">
   <a href="index.html">Home</a>
   <a href="programming.html">Programmers</a>
   <a href="mechanics.html">Mechanics</a>
@@ -73,7 +111,7 @@
   <a href="fundraising.html">Fundraising</a>
   <a href="quote_board.html">Quote Board</a>
   <a href="awards.html">Awards</a>
-  <a href="contact.html" style="float:right">Contact</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <div class="main">
@@ -90,7 +128,6 @@
   </div>
 
   <div id="events-calendar" style="display:none;">
-
     <h3>Event Calendar</h3>
     <table id="fundraisingTable" border="1" style="border-collapse: collapse; width: 100%; font-size: 16px;">
       <thead>
@@ -106,31 +143,31 @@
         <td>Sat, Oct 4-5</td>
         <td>10:00 AM - 3:00 PM</td>
         <td><a href="https://brevardzoo.org/special-events/boo-at-the-zoo/" target="_blank">Boo at the zoo</a></td>
-        <td><a href="https://www.google.com/maps/place/Brevard+Zoo/@28.2249933,-80.7164305,17z/" target="_blank">8225 N Wickham Rd, Melbourne</a></td>
+        <td><a href="https://www.google.com/maps/place/Brevard+Zoo" target="_blank">8225 N Wickham Rd, Melbourne</a></td>
       </tr>
       <tr>
         <td>Sat, Oct 11</td>
         <td>1:00 PM - 5:00 PM</td>
         <td><a href="https://www.collinsaerospace.com/" target="_blank">Collins Aerospace</a></td>
-        <td><a href="https://www.google.com/maps/place/Collins+Aerospace/@28.0918746,-80.6539773,15z/" target="_blank">795 W NASA Blvd</a></td>
+        <td><a href="https://www.google.com/maps/place/Collins+Aerospace" target="_blank">795 W NASA Blvd</a></td>
       </tr>
       <tr>
         <td>Sat, Oct 15</td>
         <td>11:00 AM - 8:00 PM</td>
         <td>Chick-fil-A</td>
-        <td><a href="https://www.google.com/maps/place/Chick-fil-A/@28.3565581,-80.6863294,17z/" target="_blank">785 E Merritt Island Cswy</a></td>
+        <td><a href="https://www.google.com/maps/place/Chick-fil-A" target="_blank">785 E Merritt Island Cswy</a></td>
       </tr>
       <tr>
         <td>Sat, Oct 18</td>
         <td>9:30 AM - 3:00 PM</td>
         <td>Fall Festival</td>
-        <td><a href="https://www.google.com/maps/place/65+Needle+Blvd,+Merritt+Island,+FL+32953/@28.3652132,-80.7009881,17z/" target="_blank">65 Needle Blvd, Merritt Island</a></td>
+        <td><a href="https://www.google.com/maps/place/65+Needle+Blvd,+Merritt+Island" target="_blank">65 Needle Blvd, Merritt Island</a></td>
       </tr>
       <tr>
         <td>Sat, Nov 8</td>
         <td>All Day</td>
         <td>Competition</td>
-        <td><a href="https://www.google.com/maps/place/Odyssey+Charter+School+Jr%2FSr+High/@27.9498323,-80.6349728,17z/data=!3m1!4b1!4m6!3m5!1s0x88de6d62109e498f:0x60db3d7c6d101816!8m2!3d27.9498323!4d-80.6323925!16s%2Fg%2F1261lwbwg?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">1350 Wyoming Dr SE, Palm Bay, FL 32909</a></td>
+        <td><a href="https://www.google.com/maps/place/Odyssey+Charter+School+Jr%2FSr+High" target="_blank">1350 Wyoming Dr SE, Palm Bay, FL 32909</a></td>
       </tr>
       </tbody>
     </table>
@@ -147,19 +184,25 @@
         <th>Address</th>
       </tr>
       </thead>
-      <tbody id="meetingTable">
-      <!-- Meeting rows get dynamically inserted here -->
-      </tbody>
+      <tbody id="meetingTable"></tbody>
     </table>
   </div>
 </div>
 
 <div class="footer">Team 9013 Matrix</div>
 
+<!-- Hamburger menu JS -->
+<script>
+  function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("responsive");
+  }
+</script>
+
+<!-- Calendar JS -->
 <script>
   function toggleCalendarBlock() {
     const type = document.getElementById('calendar-type').value;
-
     document.getElementById('home-calendar').style.display = 'none';
     document.getElementById('events-calendar').style.display = 'none';
     document.getElementById('meetings-calendar').style.display = 'none';
@@ -174,91 +217,24 @@
   }
 
   function parseEventDate(dateStr) {
-    // Grab date after comma, trim, split on dash if a range, take just first date part
     const datePart = dateStr.split(',')[1].trim().split('-')[0].trim();
-    // Append current year for parsing
     return new Date(`${datePart} ${new Date().getFullYear()}`);
   }
 
   function filterPastEventsFromTable(tableId) {
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // normalize to midnight
+    today.setHours(0, 0, 0, 0);
     const table = document.getElementById(tableId);
     if (!table) return;
-
     const rows = Array.from(table.querySelectorAll('tbody tr'));
     rows.forEach(row => {
       const dateText = row.cells[0].textContent;
       const eventDate = parseEventDate(dateText);
       eventDate.setHours(0, 0, 0, 0);
       if (eventDate < today) {
-        row.remove();
+        row.style.display = 'none';
       }
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // Delete past event and fundraising dates
-    filterPastEventsFromTable('eventsTable');
-    filterPastEventsFromTable('fundraisingTable');
-
-    // Existing meeting render code
-    const meetingTable = document.getElementById("meetingTable");
-    const meetingDays = [2, 4, 6];
-    const today = new Date();
-    const meetingsToShow = 20;
-    const location = "Merritt Island High School";
-    const eventName = "9013 Meeting";
-    const meetingTimes = {
-      2: "4:00 PM",
-      4: "4:00 PM",
-      6: "12:00 PM"
-    };
-
-    function isTodayMeetingDay() {
-      return meetingDays.includes(today.getDay());
-    }
-
-    function getNextMeetingDates(count) {
-      const dates = [];
-      let current = new Date(today);
-
-      if (isTodayMeetingDay()) {
-        dates.push(new Date(current));
-      }
-
-      while (dates.length < count) {
-        current.setDate(current.getDate() + 1);
-        if (meetingDays.includes(current.getDay())) {
-          dates.push(new Date(current));
-        }
-      }
-      return dates;
-    }
-
-    function renderMeetings() {
-      const upcomingMeetings = getNextMeetingDates(meetingsToShow);
-      meetingTable.innerHTML = "";
-
-      upcomingMeetings.forEach(date => {
-        const day = date.toLocaleDateString("en-US", { weekday: "long" });
-        const formatted = date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-        const time = meetingTimes[date.getDay()];
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${day}, ${formatted}</td>
-          <td>${time}</td>
-          <td>${eventName}</td>
-          <td>${location}</td>
-        `;
-        meetingTable.appendChild(row);
-      });
-    }
-
-    renderMeetings();
-  });
-</script>
-</body>
-
-</html>
+  // Optional: Call this to remove past //
