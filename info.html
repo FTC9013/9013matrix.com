@@ -23,7 +23,6 @@
           text-align: center;
         }
 
-        /* Navbar base styles */
         .navbar {
           overflow: hidden;
           background-color: #333;
@@ -44,10 +43,9 @@
           color: black;
         }
 
-        /* Hamburger icon styles */
         .hamburger {
           display: none;
-          float: right;
+          float: left;
           padding: 14px 20px;
           cursor: pointer;
           font-size: 24px;
@@ -55,7 +53,6 @@
           user-select: none;
         }
 
-        /* Responsive: Hide navbar links and show hamburger on small screens */
         @media screen and (max-width: 768px) {
           .navbar a {
             display: none;
@@ -103,6 +100,7 @@
 </div>
 
 <div class="navbar" id="navbar">
+    <div class="hamburger" id="hamburger">&#9776;</div>
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
     <a href="mechanics.html">Mechanics</a>
@@ -112,10 +110,7 @@
     <a href="fundraising.html">Fundraising</a>
     <a href="quote_board.html">Quote Board</a>
     <a href="awards.html">Awards</a>
-    <a href="contact.html" class="contact" style="float:right">Contact</a>
-
-    <!-- Hamburger icon -->
-    <div class="hamburger" id="hamburger">&#9776;</div>
+    <a href="contact.html" class="contact">Contact</a>
 </div>
 
 <div class="main">
