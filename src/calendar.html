@@ -216,9 +216,31 @@
     }
   }
 
+  // More robust parser — tolerates a few common formats and avoids throwing errors.
   function parseEventDate(dateStr) {
-    const datePart = dateStr.split(',')[1].trim().split('-')[0].trim();
-    return new Date(`${datePart} ${new Date().getFullYear()}`);
+    if (!dateStr || typeof dateStr !== 'string') return null;
+    try {
+      // Examples handled:
+      // "Sat, Oct 4-5" -> "Oct 4"
+      // "Sat, Nov 8" -> "Nov 8"
+      // "Oct 15" -> "Oct 15"
+      let part = dateStr;
+      if (dateStr.indexOf(',') !== -1) {
+        const pieces = dateStr.split(',');
+        // use the part after the first comma if present
+        if (pieces.length > 1) part = pieces.slice(1).join(',').trim();
+      }
+      // If it's a range like "Oct 4-5", take the first day
+      if (part.indexOf('-') !== -1) {
+        part = part.split('-')[0].trim();
+      }
+      // Add current year (browser handles month/day strings)
+      const candidate = new Date(`${part} ${new Date().getFullYear()}`);
+      if (isNaN(candidate)) return null;
+      return candidate;
+    } catch (e) {
+      return null;
+    }
   }
 
   function filterPastEventsFromTable(tableId) {
@@ -228,13 +250,30 @@
     if (!table) return;
     const rows = Array.from(table.querySelectorAll('tbody tr'));
     rows.forEach(row => {
-      const dateText = row.cells[0].textContent;
+      const dateText = (row.cells && row.cells[0]) ? row.cells[0].textContent.trim() : '';
       const eventDate = parseEventDate(dateText);
+      if (!eventDate) {
+        // If we can't parse, keep the row visible (or choose to hide — here we keep)
+        return;
+      }
       eventDate.setHours(0, 0, 0, 0);
       if (eventDate < today) {
         row.style.display = 'none';
+      } else {
+        row.style.display = '';
       }
     });
   }
 
-  // Optional: Call this to remove past //
+  // Ensure initial UI matches the select's value on load
+  window.addEventListener('DOMContentLoaded', function () {
+    // Apply the selection state immediately
+    toggleCalendarBlock();
+
+    // Remove/hide past events in the events table (optional)
+    filterPastEventsFromTable('fundraisingTable');
+  });
+</script>
+
+</body>
+</html>
