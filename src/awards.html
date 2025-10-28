@@ -4,295 +4,252 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>9013 Matrix — Awards</title>
+  <title>9013 Matrix</title>
   <link rel="icon" type="image/x-icon" href="favicon.png" />
 
   <style>
-    /* Page layout */
-    :root{
-      --accent: #0f9d58;
-      --dark: #222;
-      --muted: #666;
-      --nav-bg: #111;
-      --nav-link-hover: #efefef;
-      --max-width: 980px;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 38px;
+
+
+
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color:var(--dark);
-      background: #fafafa;
+    .header {
+      background: url("The-matrix-logo.svg.png") no-repeat center center;
+      background-size: cover;
+      color: black;
+      padding: 40px 0;
+      text-align: center;
     }
 
-    /* Keep footer at page bottom but not overlay content */
-    .page {
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      align-items:stretch;
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+
+
+
     }
 
-    header {
-      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-                  url("The-matrix-logo.svg.png") center/cover no-repeat;
-      color: #fff;
-      padding: 36px 16px;
-      text-align:center;
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-size: 16px;
     }
 
-    header .brand {
-      max-width: var(--max-width);
-      margin: 0 auto;
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
     }
 
-    header h1{
-      margin:0;
-      font-size: clamp(20px, 4.5vw, 34px);
-      letter-spacing: 1px;
+    .main {
+      padding: 20px;
+
+
     }
 
-    header p{
-      margin:8px 0 0;
-      font-weight:600;
-      color:#ffd;
-      font-size: clamp(12px, 2.4vw, 16px);
+    .footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
     }
 
-    /* Nav */
-    .nav-wrap {
-      background: var(--nav-bg);
-      color: #fff;
-    }
+    /* Hamburger menu styles (hidden by default) */
 
-    nav {
-      max-width: var(--max-width);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:8px 12px;
-    }
 
-    .nav-links {
-      display:flex;
-      gap:8px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
 
-    .nav-links a {
-      color:#fff;
-      text-decoration:none;
-      padding:10px 12px;
-      border-radius:6px;
-      font-size:14px;
-      transition: background .15s, color .15s;
-    }
-    .nav-links a:hover,
-    .nav-links a:focus {
-      background:#2b2b2b;
-      color:var(--nav-link-hover);
-      outline:none;
-    }
 
-    /* Hamburger button for small screens */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .hamburger {
-      display:none;
-      background:transparent;
-      border:0;
-      color:#fff;
-      font-size:22px;
-      padding:8px;
-      cursor:pointer;
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 14px 20px;
+      color: white;
+      background-color: #333;
+      user-select: none;
     }
 
-    /* Main content */
-    main {
-      flex:1 0 auto;
-      max-width: var(--max-width);
-      margin: 20px auto;
-      padding: 0 16px;
-      width:100%;
-    }
+    /* iPhone-specific media query */
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+      .navbar a {
+        display: none;
+        float: none;
+        text-align: left;
+        background-color: #444;
 
-    .card {
-      background:#fff;
-      border-radius:10px;
-      padding:16px;
-      box-shadow: 0 6px 18px rgba(15,15,15,0.06);
-    }
 
-    h2 {
-      margin:0 0 8px 0;
-      font-size:20px;
-    }
 
-    p.lead {
-      margin:0 0 12px 0;
-      color:var(--muted);
-      line-height:1.4;
-    }
 
-    .award-image {
-      display:block;
-      width:100%;
-      max-width:560px;
-      height:auto;
-      margin:12px 0 0;
-      border-radius:8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
 
-    /* Footer */
-    footer {
-      background:#242424;
-      color:#fff;
-      text-align:center;
-      padding:12px 8px;
-      font-size:14px;
-      flex-shrink:0;
-    }
 
-    /* Mobile styles */
-    @media (max-width: 768px) {
-      nav {
-        padding:8px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
 
-      .nav-links {
-        position:absolute;
-        left:0;
-        right:0;
-        top:60px;
-        background:var(--nav-bg);
-        flex-direction:column;
-        gap:0;
-        padding:8px 12px;
-        box-shadow:0 8px 30px rgba(0,0,0,0.25);
-        transform-origin: top;
-        transform: scaleY(0);
-        transition: transform .18s ease-out;
-        z-index: 100;
-      }
+      .navbar.responsive a {
+        display: block;
+        padding-left: 20px;
 
-      .nav-links.show {
-        transform: scaleY(1);
-      }
 
-      .nav-links a {
-        display:block;
-        padding:12px 14px;
-        border-radius:6px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
 
       .hamburger {
-        display:block;
-      }
+        display: block;
 
-      header {
-        padding:24px 12px;
-      }
 
-      .award-image {
-        max-width:100%;
-      }
-    }
 
-    /* Larger screens: make nav inline and normal */
-    @media (min-width: 769px) {
-      .nav-links {
-        position:static;
-        transform:none;
-        flex-direction:row;
-        gap:6px;
+
+
+
+
+
+
       }
     }
 
-    /* Small tweaks for very small devices (older iPhones) */
-    @media (max-width: 360px) {
-      header h1{font-size:18px;}
-      header p{font-size:12px;}
-      .nav-links a{font-size:13px;padding:10px;}
-    }
   </style>
 </head>
 
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <h1>9013 Matrix</h1>
-        <p>M‑A‑T‑R‑I‑X 90‑13 IS THE BEST</p>
-      </div>
-    </header>
+<div class="header">
+  <h1>9013 Matrix</h1>
+  <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
+</div>
 
-    <div class="nav-wrap" role="navigation" aria-label="Primary">
-      <nav>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <button class="hamburger" id="hamburger" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-          <span style="color:#fff;font-weight:600;display:none" id="brand-short">9013</span>
-        </div>
+<!-- Hamburger Icon (iPhone only) -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
-        <div class="nav-links" id="primary-nav">
-          <a href="index.html">Home</a>
-          <a href="programming.html">Programming</a>
-          <a href="mechanics.html">Mechanics</a>
-          <a href="web_developing.html">Web Developing</a>
-          <a href="info.html">Info</a>
-          <a href="calendar.html">Calendar</a>
-          <a href="fundraising.html">Fundraising</a>
-          <a href="quote_board.html">Quote Board</a>
-          <a href="awards.html" aria-current="page">Awards</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </nav>
-    </div>
+<!-- Navigation bar -->
+<div class="navbar" id="navbar">
+  <a href="index.html">Home</a>
+  <a href="programming.html">Programming</a>
+  <a href="mechanics.html">Mechanics</a>
+  <a href="web_developing.html">Web Developing</a>
+  <a href="info.html">Info</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="fundraising.html">Fundraising</a>
+  <a href="quote_board.html">Quote Board</a>
+  <a href="awards.html">Awards</a>
+  <a href="contact.html">Contact</a>
+</div>
 
-    <main>
-      <section class="card" aria-labelledby="awards-heading">
-        <h2 id="awards-heading">Awards</h2>
-        <p class="lead">We received multiple awards: Innovation Award (2nd), Connect Award (3rd), Winning Alliance Captain, Motivate Award (3rd), and Control Award (2nd).</p>
-        <img src="awardimage.png" alt="Team holding awards" class="award-image">
-      </section>
-    </main>
+<!-- Page content -->
+<div class="main">
+  <h2>Awards</h2>
+  <p>We got the Innovation Award 2nd place, Connect Award 3rd place, Winning Alliance Captain, Motivate Award 3rd place, and Control Award 2nd place.</p>
+  <img src="awardimage.png" style="width:544px;height:370px;">
+</div>
 
-    <footer>
-      Team 9013 Matrix
-    </footer>
-  </div>
+<!-- Footer -->
+<div class="footer">
+  Team 9013 Matrix
+</div>
 
-  <script>
-    (function () {
-      const btn = document.getElementById('hamburger');
-      const nav = document.getElementById('primary-nav');
+<!-- Menu toggle script -->
+<script>
+  function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("responsive");
+  }
+</script>
 
-      function toggle(){
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('show');
-      }
-
-      btn.addEventListener('click', toggle);
-
-      // Close the mobile menu when a nav link is clicked (improves UX)
-      nav.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A' && window.innerWidth <= 768) {
-          btn.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('show');
-        }
-      });
-
-      // Optional: close menu on resize to larger screens
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-          btn.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('show');
-        }
-      });
-    })();
-  </script>
 </body>
 
 </html>
