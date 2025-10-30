@@ -94,16 +94,16 @@
       margin: auto;
     }
 
-    .gallery img {
+    .gallery img, .gallery iframe {
       width: 100%;
-      height: 200px; /* uniform thumbnail height */
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .gallery img:hover {
+    .gallery img:hover, .gallery iframe:hover {
       transform: scale(1.05);
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
     }
@@ -218,9 +218,8 @@
   <!-- Photos Section -->
   <div id="photoGallery" style="display:none;">
     <h3>Photos</h3>
-
     <div class="gallery" id="photos-section">
-      <!-- 🖼️ Manually added images -->
+      <!-- Add your photos manually -->
       <img src="Images/picture1.png" alt="Photo 1">
       <img src="Images/picture2.png" alt="Photo 2">
       <img src="Images/picture3.jpg" alt="Photo 3">
@@ -237,11 +236,15 @@
     </div>
   </div>
 
-  <!-- Videos tab -->
+  <!-- Videos Section -->
   <div id="photoVideos" style="display:none;">
     <h3>Videos</h3>
-    <iframe width="1840" height="1035" src="https://www.youtube.com/embed/MmL29zN9ItU" title="FTC Centerstage |  174 Points (Former Florida State Record) | 16290 Z.I.P Ties and 9013 Matrix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <p>Videos will go here.</p>
+    <div class="gallery" id="videos-section">
+      <!-- Add YouTube iframes manually -->
+      <iframe src="https://www.youtube.com/embed/MmL29zN9ItU" title="Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID2" title="Video 2" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID3" title="Video 3" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
 </div>
 
@@ -270,7 +273,7 @@
     }
   }
 
-  // Waffle Viewer Logic
+  // Waffle Viewer Logic for Photos
   const galleryContainer = document.getElementById('photos-section');
   const viewer = document.getElementById('viewer');
   const viewerImg = document.getElementById('viewerImg');
