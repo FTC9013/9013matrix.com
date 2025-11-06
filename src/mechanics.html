@@ -45,38 +45,43 @@
 
     /* Hamburger menu styles */
     .hamburger {
-      display: none;
-      font-size: 26px;
-      color: white;
-      cursor: pointer;
-      float: left; /* changed from right to left */
-      padding: 14px 20px;
-      user-select: none;
+        display: none;  /* Hidden by default */
+        font-size: 26px;
+        cursor: pointer;
+        padding: 14px 20px;
+        background-color: #333;
+        color: white;
+        text-align: left;
     }
 
     /* Responsive styles */
     @media screen and (max-width: 768px) {
-      .navbar a {
-        display: none;
-        float: none;
-        width: 100%;
-        text-align: left;
-        padding-left: 20px;
-        border-top: 1px solid #444;
-      }
+        .navbar a {
+            display: none;
+            float: none !important; /* Override any float:right */
+            width: 100%;
+            text-align: left;
+            background-color: #444;
+            border-top: 1px solid #555;
+        }
 
-      .navbar a.contact {
-        float: none;
-        border-top: none;
-      }
+        .hamburger {
+            display: block;
+        }
 
-      .navbar.responsive a {
-        display: block;
-      }
+        .navbar.responsive {
+            position: relative;
+        }
 
-      .hamburger {
-        display: block;
-      }
+        .navbar.responsive a {
+            display: block;
+        }
+        
+        /* Ensure contact link behaves like other links on mobile */
+        .navbar.responsive a.contact {
+            float: none !important;
+            display: block;
+        }
     }
 
     .main {
@@ -102,10 +107,8 @@
 </div>
 
 <div class="navbar" id="navbar">
-  <!-- Hamburger icon moved BEFORE the links -->
-  <div class="hamburger" id="hamburger">&#9776;</div>
-
-  <a href="index.html">Home</a>
+    <div class="hamburger" onclick="toggleMenu()">☰</div> <!-- Single hamburger menu -->
+    <a href="index.html">Home</a>
   <a href="programming.html">Programmers</a>
   <a href="mechanics.html">Mechanics</a>
   <a href="web_developing.html">Web Developing</a>
@@ -128,12 +131,10 @@
 </div>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const navbar = document.getElementById('navbar');
-
-  hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('responsive');
-  });
+    function toggleMenu() {
+        const navbar = document.getElementById("navbar");
+        navbar.classList.toggle("responsive");
+    }
 </script>
 </body>
 
