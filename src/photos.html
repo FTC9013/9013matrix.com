@@ -57,31 +57,45 @@
       bottom: 0;
     }
 
+    /* Hamburger menu styles */
     .hamburger {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-      padding: 14px 20px;
-      background-color: #333;
-      color: white;
-      text-align: left;
+        display: none;  /* Hidden by default */
+        font-size: 26px;
+        cursor: pointer;
+        padding: 14px 20px;
+        background-color: #333;
+        color: white;
+        text-align: left;
     }
 
+    /* Responsive styles */
     @media screen and (max-width: 768px) {
-      .navbar a {
-        display: none;
-        float: none;
-        width: 100%;
-        text-align: left;
-        background-color: #444;
-        border-top: 1px solid #555;
-      }
-      .navbar.responsive a {
-        display: block;
-      }
-      .hamburger {
-        display: block;
-      }
+        .navbar a {
+            display: none;
+            float: none !important; /* Override any float:right */
+            width: 100%;
+            text-align: left;
+            background-color: #444;
+            border-top: 1px solid #555;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        .navbar.responsive {
+            position: relative;
+        }
+
+        .navbar.responsive a {
+            display: block;
+        }
+        
+        /* Ensure contact link behaves like other links on mobile */
+        .navbar.responsive a.contact {
+            float: none !important;
+            display: block;
+        }
     }
 
     /* ===== Waffle Gallery Styles ===== */
@@ -184,11 +198,9 @@
   <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<div class="hamburger" onclick="togglePhotoMenu()">☰</div>
-
 <div class="navbar" id="navbar">
-  <div class="hamburger" id="hamburger">&#9776;</div>
-  <a href="index.html">Home</a>
+    <div class="hamburger" onclick="toggleMenu()">☰</div> <!-- Single hamburger menu -->
+    <a href="index.html">Home</a>
   <a href="programming.html">Programming</a>
   <a href="mechanics.html">Mechanics</a>
   <a href="web_developing.html">Web Developing</a>
@@ -335,7 +347,7 @@
 
 <script>
   // Navbar toggle
-  function togglePhotoMenu() {
+  function toggleMenu() {
     const navbar = document.getElementById("navbar");
     navbar.classList.toggle("responsive");
   }
