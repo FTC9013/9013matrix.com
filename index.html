@@ -59,7 +59,7 @@
 
         /* Hamburger menu styles */
         .hamburger {
-            display: none;
+            display: none;  /* Hidden by default */
             font-size: 26px;
             cursor: pointer;
             padding: 14px 20px;
@@ -72,7 +72,7 @@
         @media screen and (max-width: 768px) {
             .navbar a {
                 display: none;
-                float: none;
+                float: none !important; /* Override any float:right */
                 width: 100%;
                 text-align: left;
                 background-color: #444;
@@ -83,7 +83,17 @@
                 display: block;
             }
 
+            .navbar.responsive {
+                position: relative;
+            }
+
             .navbar.responsive a {
+                display: block;
+            }
+            
+            /* Ensure contact link behaves like other links on mobile */
+            .navbar.responsive a.contact {
+                float: none !important;
                 display: block;
             }
         }
@@ -113,12 +123,9 @@
   cursor: pointer;
 }
 </style>
-<!-- Hamburger Icon (Mobile) -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
 <!-- Nav bar -->
 <div class="navbar" id="navbar">
-    <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger on the left -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div> <!-- Single hamburger menu -->
     <a href="index.html">Home</a>
     <a href="programming.html">Programming</a>
     <a href="mechanics.html">Mechanics</a>
