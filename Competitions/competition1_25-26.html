@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>9013 Matrix</title>
+    <title>9013 Matrix - Competition 1</title>
     <link rel="icon" type="image/x-icon" href="../favicon.png" />
 
     <style>
@@ -59,7 +59,7 @@
 
         /* Hamburger menu styles */
         .hamburger {
-            display: none;  /* Hidden by default */
+            display: none;
             font-size: 26px;
             cursor: pointer;
             padding: 14px 20px;
@@ -72,7 +72,7 @@
         @media screen and (max-width: 768px) {
             .navbar a {
                 display: none;
-                float: none !important; /* Override any float:right */
+                float: none !important;
                 width: 100%;
                 text-align: left;
                 background-color: #444;
@@ -91,11 +91,70 @@
                 display: block;
             }
 
-            /* Ensure contact link behaves like other links on mobile */
             .navbar.responsive a.contact {
                 float: none !important;
                 display: block;
             }
+        }
+
+        /* Competition view overlay */
+        .competition-view {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            overflow: auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .competition-view.active {
+            display: flex;
+        }
+
+        .competition-content {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 800px;
+        }
+
+        .competition-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .competition-content p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        .back-btn, .competition-link {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 4px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-btn:hover, .competition-link:hover {
+            background-color: #555;
+        }
+
+        .competition-links {
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -107,47 +166,69 @@
     <p>M-A-T-R-I-X 90-13 IS THE BEST</p>
 </div>
 
-<script>
-</script>
-
-<style>
-    .button {
-      position: absolute;
-      top: 65px;
-      left: 388px;
-      width: 45px;
-      height: 45px;
-      opacity: 0; /* invisible */
-      cursor: pointer;
-    }
-</style>
-<!-- Nav bar -->
 <div class="navbar" id="navbar">
-    <div class="hamburger" onclick="toggleMenu()">☰</div> <!-- Single hamburger menu -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
     <a href="../index.html">Home</a>
+    <a href="competition_home.html">Competitions Home</a>
     <a href="competition1_25-26.html">Competition 1</a>
-    <a href="competition1_pictures_25-26.html">Competition 1 Photos</a>
     <a href="competition2_25-26.html">Competition 2</a>
-    <a href="competition2_pictures_25-26.html">Competition 2 Photos</a>
+    <a href="competition3_25-26.html">Competition 3</a>
 </div>
 
 <div class="main">
-    <h2>Competition 1</h2>
+    <h2>Competition 1 - 2025-26</h2>
+    <p>Select a competition to view details:</p>
+    
+    <div class="competition-links">
+        <a href="#" onclick="showCompetition('comp1'); return false;" class="competition-link">View Competition 1</a>
+        <a href="#" onclick="showCompetition('comp2'); return false;" class="competition-link">View Competition 2</a>
+        <a href="#" onclick="showCompetition('comp3'); return false;" class="competition-link">View Competition 3</a>
+    </div>
+</div>
 
-    <h3>Match results — Sat 11/8</h3>
-    <p>Six qualification matches were played on Sat 11/8. Results:</p>
-    <ul>
-        <li>Q1 — Red (18258, 4227) defeated Blue (9013, 31660) 73–9</li>
-        <li>Q6 — Blue (19785, 7341) beat Red (4228, 9013) 51–33</li>
-        <li>Q13 — Blue (7592, 20574) beat Red (9013, 19885) 64–11</li>
-        <li>Q18 — Red (31660, 4717) beat Blue (9013, 7477) 38–24</li>
-        <li>Q21 — Red (16290, 9013) beat Blue (8617, 19885) 88–20</li>
-        <li>Q26 — Blue (32914, 14976) beat Red (30447, 9013) 66–54</li>
-    </ul>
+<!-- Competition 1 Full View -->
+<div class="competition-view" id="comp1-view">
+    <div class="competition-content">
+        <h2>Competition 1</h2>
+        <p>2025-26 Season</p>
+        <p>Date: November 8, 2025</p>
+        <p>Location: Odyssey Charter School Jr/Sr High, Palm Bay, FL</p>
+        <p>Our team scored 219 points across 6 qualification matches.</p>
+        <p>Match Results:</p>
+        <ul style="text-align: left; display: inline-block;">
+            <li>Q1 — Lost 73–9</li>
+            <li>Q6 — Lost 51–33</li>
+            <li>Q13 — Lost 64–11</li>
+            <li>Q18 — Lost 38–24</li>
+            <li>Q21 — Won 88–20</li>
+            <li>Q26 — Lost 66–54</li>
+        </ul>
+        <button class="back-btn" onclick="hideCompetition()">← Back to Home</button>
+    </div>
+</div>
 
-    <h3>Overview by team</h3>
-    <p>Matrix (9013) played six matches (1–5), scoring 219 points and conceding 312 (avg 36.5 PF). Notable single-match team scores: 16290 scored 88, 18258 scored 73, 7592 and 20574 each scored 64, and 32914 and 14976 each scored 66.</p>
-    <a href="https://ftc-events.firstinspires.org/2025/USFLSCM1/qualifications" target="_blank">Our Scores</a>
+<!-- Competition 2 Full View -->
+<div class="competition-view" id="comp2-view">
+    <div class="competition-content">
+        <h2>Competition 2</h2>
+        <p>2025-26 Season</p>
+        <p>Date: TBA</p>
+        <p>Location: TBA</p>
+        <p>More details coming soon...</p>
+        <button class="back-btn" onclick="hideCompetition()">← Back to Home</button>
+    </div>
+</div>
+
+<!-- Competition 3 Full View -->
+<div class="competition-view" id="comp3-view">
+    <div class="competition-content">
+        <h2>Competition 3</h2>
+        <p>2025-26 Season</p>
+        <p>Date: TBA</p>
+        <p>Location: TBA</p>
+        <p>More details coming soon...</p>
+        <button class="back-btn" onclick="hideCompetition()">← Back to Home</button>
+    </div>
 </div>
 
 <div class="footer">
@@ -159,7 +240,17 @@
         const navbar = document.getElementById("navbar");
         navbar.classList.toggle("responsive");
     }
+
+    function showCompetition(compId) {
+        document.getElementById(compId + '-view').classList.add('active');
+    }
+
+    function hideCompetition() {
+        const views = document.querySelectorAll('.competition-view.active');
+        views.forEach(view => view.classList.remove('active'));
+    }
 </script>
+
 </body>
 
 </html>
