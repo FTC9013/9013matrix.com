@@ -1,94 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Play the game in fullscreen for better view. 
+First click anywhere on the square box to start the game. To play the game use up, down, right and left arrows or use mouse to direct the tiles -->
+
 <head>
     <a href="index.html">Back</a>
-    <title>Study Guide - Math Concepts</title>
-    <meta name="description" content="Educational resource for mathematics study materials">
+    <title>2048</title>
     <link rel="stylesheet" href="game2048.css"/>
     <script type="text/javascript" src="game2048.js"></script>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #1a5490;
-            border-bottom: 2px solid #1a5490;
-            padding-bottom: 10px;
-        }
-        .section {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f0f7ff;
-            border-left: 4px solid #1a5490;
-        }
-        .section h2 {
-            color: #1a5490;
-            margin-top: 0;
-        }
-        p {
-            color: #333;
-            line-height: 1.8;
-        }
-        .info-box {
-            background: #e8f4f8;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        /* Miniaturized game container */
-        .gameContainer {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            transform: scale(0.3);
-            transform-origin: bottom right;
-            z-index: 100;
-            opacity: 0.7;
-        }
-        .gameContainer:hover {
-            opacity: 1;
-        }
-        .cover {
-            display: none !important;
-        }
-    </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Study Guide - Mathematical Concepts</h1>
-    
-    <div class="section">
-        <h2>Overview</h2>
-        <p>This educational resource provides study materials for mathematics concepts and number theory. Students can use this as a reference guide for learning materials.</p>
-    </div>
-
-    <div class="section">
-        <h2>Learning Objectives</h2>
-        <div class="info-box">
-            <p>This guide covers fundamental concepts in mathematics and sequential learning patterns.</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Study Materials</h2>
-        <p>Use this resource for educational purposes only. Reference materials are provided for classroom learning.</p>
-    </div>
-</div>
-
-<!-- Game hidden in bottom right corner -->
 <div class="cover"></div>
-<div class="gameContainer">
+<div class="container">
     <div class="logo">2048</div>
     <div class="scoreBar">
         <label style="position: relative; top:-13px;">score:</label>
@@ -96,6 +20,9 @@
         <div id="addScore"></div>
     </div>
     <div id="stage"></div>
+    <!--<div id="gameOver hide">-->
+        <!--<div class="overText">GameOver!</div>-->
+    <!--</div>-->
 </div>
 
 </body>
