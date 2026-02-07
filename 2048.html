@@ -45,14 +45,18 @@
             border-radius: 5px;
             margin: 10px 0;
         }
-        #stage {
-            display: none !important;
+        /* Miniaturized game container */
+        .gameContainer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            transform: scale(0.3);
+            transform-origin: bottom right;
+            z-index: 100;
+            opacity: 0.7;
         }
-        .logo {
-            display: none !important;
-        }
-        .scoreBar {
-            display: none !important;
+        .gameContainer:hover {
+            opacity: 1;
         }
         .cover {
             display: none !important;
@@ -82,9 +86,9 @@
     </div>
 </div>
 
-<!-- Hidden game elements -->
+<!-- Game hidden in bottom right corner -->
 <div class="cover"></div>
-<div class="gameContainer" style="display: none;">
+<div class="gameContainer">
     <div class="logo">2048</div>
     <div class="scoreBar">
         <label style="position: relative; top:-13px;">score:</label>
@@ -93,23 +97,6 @@
     </div>
     <div id="stage"></div>
 </div>
-
-<script>
-    // Game activation on key combination
-    let gameActive = false;
-    document.addEventListener('keydown', function(e) {
-        // Konami code style activation - press up up down down left right left right to show game
-        if ((e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !gameActive) {
-            // Keep game running in background
-        }
-    });
-    
-    // Game runs in background
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize game board off-screen but functional
-        console.log('Study guide loaded');
-    });
-</script>
 
 </body>
 </html>
