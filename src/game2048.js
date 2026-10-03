@@ -1,4 +1,5 @@
-
+// MARKED FOR DELETION
+/*
 var gameObj = {
     points: {
         score: 0,
@@ -271,3 +272,4 @@ window.onload = function () {
     document.onkeyup = keyUp;
 //    disableSelection(document.body);
 }
+*/

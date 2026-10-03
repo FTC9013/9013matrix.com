@@ -1,3 +1,7 @@
+/*MARKED FOR DELETION*/
+
+
+/*
 html{
     height: 100%;
     -moz-user-select: none;
@@ -175,9 +179,9 @@ div{
     font-size: 100px;
     transition:all .2s ease;   -ms-transition:all .2s ease; -moz-transition:all .2s ease; -o-transition:all .2s ease; -webkit-transition:all .2s ease; 
     animation: myfirst .5s;
-    -moz-animation: myfirst .5s;	/* Firefox */
-    -webkit-animation: myfirst .5s;	/* Safari or Chrome or opera */
-}
+    -moz-animation: myfirst .5s;	/* Firefox *
+    -webkit-animation: myfirst .5s;	/* Safari or Chrome or opera *
+    }
 
 .num4{
     background: #fafafa;
@@ -185,8 +189,8 @@ div{
     font-size: 100px;
     transition:all .2s ease;   -ms-transition:all .2s ease; -moz-transition:all .2s ease; -o-transition:all .2s ease; -webkit-transition:all .2s ease; 
     animation: myfirst .5s;
-    -moz-animation: myfirst .5s;	/* Firefox */
-    -webkit-animation: myfirst .5s;	/* Safari or Chrome */
+    -moz-animation: myfirst .5s;	/* Firefox *
+    -webkit-animation: myfirst .5s;	/* Safari or Chrome *
 }
 
 .num8{
@@ -269,15 +273,16 @@ div{
     100%{opacity: 1;transform:scale(1)}
 }
 
-@-moz-keyframes myfirst /* Firefox */
+@-moz-keyframes myfirst /* Firefox *
 {
     0%{opacity: 0;-moz-transform:scale(0)}
     50% {opacity: .5;-moz-transform:scale(1.5)}
     100%{opacity: 1;-moz-transform:scale(1)}
 }
-@-webkit-keyframes myfirst /* Safari or Chrome */
+@-webkit-keyframes myfirst /* Safari or Chrome *
 {
     0%{opacity: 0;-webkit-transform:scale(0)}
     50% {opacity: .5;-webkit-transform:scale(1.5)}
     100%{opacity: 1;-webkit-transform:scale(1)}
 }
+*/
