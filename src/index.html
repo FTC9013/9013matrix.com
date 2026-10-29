@@ -38,6 +38,14 @@
 <a class="button" href="button.html"></a></div>
 
 <script>
+    const button = document.getElementById("notifications");
+        button.addEventListener("click", () => {
+            Notification.requestPermission().then((result) => {
+                if (result === "granted") {
+                    randomNotification();
+                }
+            });
+        });
 </script>
 
 <style>
@@ -65,6 +73,7 @@
     <a href="awards.html">Awards</a>
     <a href="contact.html" class="contact" style="float:right">Contact</a>
     <a href="photos.html">Photos</a>
+    <p id="notifications">Allow Notifications</p>
 </div>
 
 <div class="main">
