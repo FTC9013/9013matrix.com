@@ -4,8 +4,8 @@
         "short_name": "9013",
         "start_url": "/",
         "display": "standalone",
-        "background_color": "#ffffff",
-        "theme_color": "#000000",
+        "background_color": "#4a99e8",
+        "theme_color": "#4a9938",
         "icons": [
             {
                 "src": "favicon.png",
@@ -16,6 +16,10 @@
                 "src": "favicon.png",
                 "sizes": "512x512",
                 "type": "image/png"
+            },
+            {
+                "src": "favicon.ico",
+                "sizes": "any"
             }
         ]
     }
