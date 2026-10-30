@@ -38,6 +38,14 @@
 <a class="button" href="button.html"></a></div>
 
 <script>
+    const button = document.getElementById("notifications");
+        button.addEventListener("click", () => {
+            Notification.requestPermission().then((result) => {
+                if (result === "granted") {
+                    randomNotification();
+                }
+            });
+        });
 </script>
 
 <style>
@@ -76,6 +84,7 @@
         This web-site is active but still in progress, we are a small team so give us time to get it ready.</p>
     <a href="Competitions/competition_home.html" class="competition-btn">View Competitions</a>
     <a href="live_comp.html" class="competition-btn">View Our LIVE Comp</a>
+    <p id="notifications">Allow Notifications</p>
 </div>
 
 <div class="footer">
