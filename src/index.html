@@ -40,36 +40,7 @@
 
 <a class="button" href="button.html"></a></div>
 
-<script>
-    const button = document.getElementById("notifications");
-        button.addEventListener("click", function() {
-            Notification.requestPermission().then((result) => {
-                if (result === "granted") {
-                    randomNotification();
-                }
-            });
-        });
-</script>
-<script>
-    let installPrompt;
-    const button1 = document.getElementById("installButton");
 
-    window.addEventListener("beforeinstallprompt", (event) => {
-        event.preventDefault();
-        installPrompt = event;
-        button1.hidden = false;
-    });
-
-    button1.addEventListener("click", async () => {
-        if (!installPrompt) return;
-
-        installPrompt.prompt();
-
-        const result = await installPrompt.userChoice;
-        installPrompt = null;
-        button1.hidden = true;
-    });
-</script>
 
 <style>
 .button {
@@ -120,6 +91,36 @@
         const navbar = document.getElementById("navbar");
         navbar.classList.toggle("responsive");
     }
+</script>
+<script>
+    const button = document.getElementById("notifications");
+    button.addEventListener("click", function () {
+        Notification.requestPermission().then((result) => {
+            if (result === "granted") {
+                randomNotification();
+            }
+        });
+    });
+</script>
+<script>
+    let installPrompt;
+    const button1 = document.getElementById("installButton");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        installPrompt = event;
+        button1.hidden = false;
+    });
+
+    button1.addEventListener("click", async () => {
+        if (!installPrompt) return;
+
+        installPrompt.prompt();
+
+        const result = await installPrompt.userChoice;
+        installPrompt = null;
+        button1.hidden = true;
+    });
 </script>
 </body>
 
