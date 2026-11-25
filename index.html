@@ -40,36 +40,7 @@
 
 <a class="button" href="button.html"></a></div>
 
-<script>
-    const button = document.getElementById("notifications");
-        button.addEventListener("click", function() {
-            Notification.requestPermission().then((result) => {
-                if (result === "granted") {
-                    randomNotification();
-                }
-            });
-        });
-</script>
-<script>
-    let installPrompt;
-    const button1 = document.getElementById("installButton");
 
-    window.addEventListener("beforeinstallprompt", (event) => {
-        event.preventDefault();
-        installPrompt = event;
-        button1.hidden = false;
-    });
-
-    button1.addEventListener("click", async () => {
-        if (!installPrompt) return;
-
-        installPrompt.prompt();
-
-        const result = await installPrompt.userChoice;
-        installPrompt = null;
-        button1.hidden = true;
-    });
-</script>
 
 <style>
 .button {
@@ -107,7 +78,15 @@
         This web-site is active but still in progress, we are a small team so give us time to get it ready.</p>
     <a href="Competitions/competition_home.html" class="competition-btn">View Competitions</a>
     <a href="live_comp.html" class="competition-btn">View Our LIVE Comp</a>
-    <button id="notifications" onclick="requestNotificationPermission()" name="notifications">Ignore this for now, it doesnt work yet</button>
+    <button id="notifications" name="notifications">Ignore this for now, it doesnt work yet</button>
+    <script>
+        function randomNotification() {
+            new Notification("Test Notification", {
+                body: "This is a test notification.",
+                icon: "favicon.ico"
+            });
+        }
+    </script>
     <button id="installButton">Test Install Prompt</button>
 </div>
 
@@ -120,6 +99,36 @@
         const navbar = document.getElementById("navbar");
         navbar.classList.toggle("responsive");
     }
+</script>
+<script>
+    const button = document.getElementById("notifications");
+    button.addEventListener("click", function () {
+        Notification.requestPermission().then((result) => {
+            if (result === "granted") {
+                randomNotification();
+            }
+        });
+    });
+</script>
+<script>
+    let installPrompt;
+    const button1 = document.getElementById("installButton");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        installPrompt = event;
+        button1.hidden = false;
+    });
+
+    button1.addEventListener("click", async () => {
+        if (!installPrompt) return;
+
+        installPrompt.prompt();
+
+        const result = await installPrompt.userChoice;
+        installPrompt = null;
+        button1.hidden = true;
+    });
 </script>
 </body>
 
